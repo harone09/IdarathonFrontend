@@ -1,0 +1,54 @@
+<div class="list row">
+  <div class="col-md-6">
+    <h4>Mes Projets</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let p of projects; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveProject(p, i)"
+      >
+        {{ p.name }}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentProject">
+      <h4>Tutorial</h4>
+      <div>
+        <label><strong>Title:</strong></label> {{ currentProject.name }}
+      </div>
+      <div>
+        <label><strong>Description:</strong></label>
+        {{ currentProject.description }}
+      </div>
+      <div>
+        <label><strong>Date Debut:</strong></label>
+        {{ currentProject.dateDebut | date:'dd/MM/yyyy' }}
+      </div>
+      <div>
+        <label><strong>Date Fin:</strong></label>
+        {{ currentProject.dateFin | date:'dd/MM/yyyy'}}
+      </div>
+      <div>
+        <label><strong>Poucentage %</strong></label>
+        {{ currentProject.currentPercent }}
+      </div>
+      <div>
+        <label><strong>Nbr Phases</strong></label>
+        {{ currentProject.nbrPhases }}
+      </div>
+      <div>
+        <label><strong>Nbr Taches</strong></label>
+        {{ currentProject.nbrTaches }}
+      </div>
+
+
+      <a class="badge badge-warning" routerLink="/projets/{{ currentProject.id}}">
+        Modifier
+      </a>
+    </div>
+
+  </div>
+</div>
+
