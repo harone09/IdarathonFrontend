@@ -9,13 +9,18 @@ import { ListProjectComponent } from './components/list-project/list-project.com
 import { HttpClientModule } from '@angular/common/http';
 import { UpdateProjectComponent } from './components/update-project/update-project.component';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { RestApiLoginService } from './services/rest-api-login.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddProjectComponent,
     ListProjectComponent,
-    UpdateProjectComponent
+    UpdateProjectComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +29,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [RestApiLoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
