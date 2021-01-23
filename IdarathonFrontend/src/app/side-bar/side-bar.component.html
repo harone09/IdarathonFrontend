@@ -1,0 +1,54 @@
+<mat-sidenav-container class="sidenav-container" >
+  <mat-sidenav #drawer class="sidenav" fixedInViewport style="background-color: #0E3854;"
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>
+      <img src="assets/images/Logo.PNG" alt="logo">
+    </mat-toolbar>
+    <img src="assets/images/photo.png" alt="profil" class="profil">
+    <h3 class="nav-text">Marie Lorene &nbsp;<mat-icon class="sky-blue" style="font-size: 18px;"> border_color</mat-icon></h3>
+
+    <br/>
+    <mat-nav-list>
+      <a mat-list-item href="#" class="white">
+        <mat-icon class="sky-blue"> insert_chart </mat-icon>
+        &nbsp;Tableau de bord</a>
+      <a mat-list-item href="#" class="white">
+        <mat-icon class="sky-blue">dashboard</mat-icon>
+        &nbsp; Mes Projets</a>
+      <a mat-list-item href="#" class="white">
+        <mat-icon class="sky-blue" >work</mat-icon>
+        &nbsp;Mode de travail</a>
+      <a mat-list-item href="#" class="white">
+        <mat-icon class="sky-blue">event_available</mat-icon>
+        &nbsp;Mes services</a>
+      <a mat-list-item href="#" class="white" >
+        <mat-icon class="sky-blue"> forum</mat-icon>
+        &nbsp; Communication</a>
+      <a mat-list-item href="#" class="white">
+        <mat-icon class="sky-blue">find_in_page</mat-icon>
+        &nbsp;Referentiels</a>
+      <br/>
+      <a mat-list-item href="#" class="white">
+        <mat-icon class="sky-blue">subdirectory_arrow_left</mat-icon>
+        &nbsp; Se déconnécter</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content style="background: linear-gradient(to right, #26D0CE, #1A2980) !important;">
+    <mat-toolbar style="background-color: #0E3854;">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon class="sky-blue"aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span></span>
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
