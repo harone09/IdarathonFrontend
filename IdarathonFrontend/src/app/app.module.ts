@@ -3,26 +3,59 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {MatTreeModule} from '@angular/material/tree';
+import {MatTableModule} from '@angular/material/table';
 import { AddProjectComponent } from './components/add-project/add-project.component';
 import { ListProjectComponent } from './components/list-project/list-project.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UpdateProjectComponent } from './components/update-project/update-project.component';
 import { FormsModule } from '@angular/forms';
+import { AddPhaseComponent } from './components_phase/add-phase/add-phase.component';
+import { ListPhaseComponent } from './components_phase/list-phase/list-phase.component';
+import { UpdatePhaseComponent } from './components_phase/update-phase/update-phase.component';
+import { SideBarComponent } from './side-bar/side-bar.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     AddProjectComponent,
     ListProjectComponent,
-    UpdateProjectComponent
+    UpdateProjectComponent,
+    AddPhaseComponent,
+    ListPhaseComponent,
+    UpdatePhaseComponent,
+    SideBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatTreeModule,
+    MatTableModule,
+    NoopAnimationsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
