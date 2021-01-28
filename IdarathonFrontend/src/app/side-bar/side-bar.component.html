@@ -4,7 +4,7 @@
                [mode]="(isHandset$ | async) ? 'over' : 'side'"
                [opened]="(isHandset$ | async) === false">
     <mat-toolbar>
-      <img src="assets/images/Logo.PNG" alt="logo">
+      <img src="assets/images/Logo.PNG" width="150" alt="logo">
     </mat-toolbar>
     <img src="assets/images/photo.png" alt="profil" class="profil">
     <h3 class="nav-text">Marie Lorene &nbsp;<mat-icon class="sky-blue" style="font-size: 18px;"> border_color</mat-icon></h3>
@@ -14,7 +14,7 @@
       <a mat-list-item href="#" class="white">
         <mat-icon class="sky-blue"> insert_chart </mat-icon>
         &nbsp;Tableau de bord</a>
-      <a mat-list-item href="#" class="white">
+      <a mat-list-item routerLinkActive="/projets" class="white">
         <mat-icon class="sky-blue">dashboard</mat-icon>
         &nbsp; Mes Projets</a>
       <a mat-list-item href="#" class="white">

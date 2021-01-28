@@ -1,3 +1,4 @@
+import { LoginComponent } from './login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -20,9 +21,6 @@ import { ListProjectComponent } from './components/list-project/list-project.com
 import { HttpClientModule } from '@angular/common/http';
 import { UpdateProjectComponent } from './components/update-project/update-project.component';
 import { FormsModule } from '@angular/forms';
-import { AddPhaseComponent } from './components_phase/add-phase/add-phase.component';
-import { ListPhaseComponent } from './components_phase/list-phase/list-phase.component';
-import { UpdatePhaseComponent } from './components_phase/update-phase/update-phase.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 
 
@@ -32,10 +30,8 @@ import { SideBarComponent } from './side-bar/side-bar.component';
     AddProjectComponent,
     ListProjectComponent,
     UpdateProjectComponent,
-    AddPhaseComponent,
-    ListPhaseComponent,
-    UpdatePhaseComponent,
-    SideBarComponent
+    SideBarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
