@@ -1,54 +1,42 @@
-<div class="list row">
-  <div class="col-md-6">
-    <h4>Mes Projets</h4>
-    <ul class="list-group">
-      <li
-        class="list-group-item"
-        *ngFor="let p of projects; let i = index"
-        [class.active]="i == currentIndex"
-        (click)="setActiveProject(p, i)"
-      >
-        {{ p.name }}
-      </li>
-    </ul>
-  </div>
-  <div class="col-md-6">
-    <div *ngIf="currentProject">
-      <h4>Tutorial</h4>
-      <div>
-        <label><strong>Title:</strong></label> {{ currentProject.name }}
-      </div>
-      <div>
-        <label><strong>Description:</strong></label>
-        {{ currentProject.description }}
-      </div>
-      <div>
-        <label><strong>Date Debut:</strong></label>
-        {{ currentProject.dateDebut | date:'dd/MM/yyyy' }}
-      </div>
-      <div>
-        <label><strong>Date Fin:</strong></label>
-        {{ currentProject.dateFin | date:'dd/MM/yyyy'}}
-      </div>
-      <div>
-        <label><strong>Poucentage %</strong></label>
-        {{ currentProject.currentPercent }}
-      </div>
-      <div>
-        <label><strong>Nbr Phases</strong></label>
-        {{ currentProject.nbrPhases }}
-      </div>
-      <div>
-        <label><strong>Nbr Taches</strong></label>
-        {{ currentProject.nbrTaches }}
-      </div>
 
-
-      <a class="badge badge-warning" routerLink="/projets/{{ currentProject.id}}">
-        Modifier
-      </a>
-    </div>
-
-  </div>
-</div>
-
+<button mat-flat-button (click)="openAddDialog()"> Nouveau Projet</button><br>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($any($event.target).value)" placeholder="Search">
+  </mat-form-field>
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 glass">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom</th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+  <ng-container matColumnDef="dateDebut">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> date début </th>
+    <td mat-cell *matCellDef="let element"> {{element.dateDebut | date}} </td>
+  </ng-container>
+  <ng-container matColumnDef="dateFin">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> date Fin </th>
+    <td mat-cell *matCellDef="let element"> {{element.dateFin | date }} </td>
+  </ng-container>
+  <ng-container matColumnDef="currentPercent">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> % </th>
+    <td mat-cell *matCellDef="let element"> {{element.currentPercent}} </td>
+  </ng-container>
+  <ng-container matColumnDef="nbrPhases">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+    <td mat-cell *matCellDef="let element"> {{element.nbrPhases}} </td>
+  </ng-container>
+  <ng-container matColumnDef="nbrTaches">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Taches </th>
+    <td mat-cell *matCellDef="let element"> {{element.nbrTaches}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-mini-fab class="blue" ><mat-icon>date_range</mat-icon> {{element.id}}</button>
+      <button mat-mini-fab class="sky-blue" (click)="openUpdateDialog(element.id)"><mat-icon>edit</mat-icon></button>
+      <button mat-mini-fab class="dark-blue" (click)="openDeleteDialog(element.id)"><mat-icon>delete</mat-icon></button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+  <mat-paginator class="glass" style="width:80%;" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

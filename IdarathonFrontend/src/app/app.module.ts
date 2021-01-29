@@ -1,3 +1,4 @@
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { LoginComponent } from './login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -22,6 +23,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { UpdateProjectComponent } from './components/update-project/update-project.component';
 import { FormsModule } from '@angular/forms';
 import { SideBarComponent } from './side-bar/side-bar.component';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input'
+import { MatFormField, MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { CdkColumnDef } from '@angular/cdk/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { DeleteProjectComponent } from './components/delete-project/delete-project.component';
 
 
 @NgModule({
@@ -31,7 +41,8 @@ import { SideBarComponent } from './side-bar/side-bar.component';
     ListProjectComponent,
     UpdateProjectComponent,
     SideBarComponent,
-    LoginComponent
+    LoginComponent,
+    DeleteProjectComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +50,9 @@ import { SideBarComponent } from './side-bar/side-bar.component';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    LayoutModule,
+    MatTreeModule,
+    AppRoutingModule,
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
@@ -48,12 +62,19 @@ import { SideBarComponent } from './side-bar/side-bar.component';
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
-    MatTreeModule,
     MatTableModule,
-    NoopAnimationsModule
-
+    MatFormFieldModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatListModule,
+    MatInputModule,
+    MatSortModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatMomentDateModule,
   ],
-  providers: [],
+  providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}},CdkColumnDef],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

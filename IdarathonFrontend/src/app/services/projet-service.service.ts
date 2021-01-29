@@ -12,23 +12,23 @@ export class ProjetServiceService {
   constructor(private http: HttpClient ) {}
 
 
-  getAll(): Observable<any> {
+   getAll(): Observable<any> {
     return this.http.get(baseUrl);
   }
 
-  get(id): Observable<any> {
+   get(id): Observable<any> {
     return this.http.get(`${baseUrl}/${id}`);
   }
 
-  create(data): Observable<any> {
-    return this.http.post(baseUrl, data);
+  async create(data){
+    return await this.http.post(baseUrl, data).toPromise();
   }
 
-  update(id, data): Observable<any> {
-    return this.http.put(`${baseUrl}/${id}`, data);
+  async update(id, data){
+    return this.http.put(`${baseUrl}/${id}`, data).toPromise();
   }
 
-  delete(id): Observable<any> {
-    return this.http.delete(`${baseUrl}/${id}`);
+  async delete(id) {
+    return this.http.delete(`${baseUrl}/${id}`).toPromise();
   }
 }

@@ -1,6 +1,7 @@
 import { ProjetServiceService } from './../../services/projet-service.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-update-project',
@@ -8,52 +9,33 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./update-project.component.css']
 })
 export class UpdateProjectComponent implements OnInit {
-  currentProject;
-  message = '';
-  constructor(private tutorialService: ProjetServiceService,
-    private route: ActivatedRoute,
-    private router: Router) { }
 
-  ngOnInit(): void {
-    this.message = '';
-    this.getProject(this.route.snapshot.paramMap.get('id'));
+  async ngOnInit(): Promise<void> {
+    (await this.projetServ.get(this.data.id)).subscribe(r=>{
+      this.data=r;
+    })
   }
 
-  getProject(id): void {
-    this.tutorialService.get(id)
-      .subscribe(
-        data => {
-          this.currentProject = data;
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-        });
+  constructor(private projetServ:ProjetServiceService,public dialogRef: MatDialogRef<UpdateProjectComponent>
+    ,@Inject(MAT_DIALOG_DATA) public data: UpdateprojectModel) { }
+
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
-
-  updateProject(): void {
-    this.tutorialService.update(this.currentProject.id, this.currentProject)
-      .subscribe(
-        response => {
-          console.log(response);
-          this.message = 'The Project was updated successfully!';
-        },
-        error => {
-          console.log(error);
-        });
+  onValid():void{
+    this.submitUpdateProject(this.data);
+    this.dialogRef.close();
   }
 
-  deleteProject(): void {
-    this.tutorialService.delete(this.currentProject.id)
-      .subscribe(
-        response => {
-          console.log(response);
-          this.router.navigate(['/projets']);
-        },
-        error => {
-          console.log(error);
-        });
+  async submitUpdateProject(p): Promise<void> {
+    await this.projetServ.update(p.id, p)
   }
+}
 
+export class UpdateprojectModel {
+
+  constructor(public id:number,public name:string,public description:string,public dateDebut:Date,public dateFin:Date) {
+  }
 }

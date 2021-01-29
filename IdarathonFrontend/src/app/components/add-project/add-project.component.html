@@ -1,57 +1,27 @@
-<div style="width: 400px; margin: auto;">
-  <div class="submit-form">
-    <div *ngIf="!submitted">
-      <div class="form-group">
-        <label for="title">Name</label>
-        <input
-          type="text"
-          class="form-control"
-          id="title"
-          required
-          [(ngModel)]="projet.name"
-          name="title"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="description">Description</label>
-        <input
-          class="form-control"
-          id="description"
-          required
-          [(ngModel)]="projet.description"
-          name="description"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="dateDebut">Date Début</label>
-        <input
-          class="form-control"
-          id="dateDebut"
-          required
-          [(ngModel)]="projet.dateDebut"
-          name="description"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="dateFin">Date Fin</label>
-        <input
-          class="form-control"
-          id="dateFin"
-          required
-          [(ngModel)]="projet.dateFin"
-          name="description"
-        />
-      </div>
-
-      <button (click)="saveTutorial()" class="btn btn-success">Submit</button>
-    </div>
-
-    <div *ngIf="submitted">
-      <h4>You submitted successfully!</h4>
-      <button class="btn btn-success" (click)="newTutorial()">Add</button>
-    </div>
+  <h2 mat-dialog-title>Nouveau Projet</h2>
+  <div mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Nom du Projet</mat-label>
+      <input matInput [(ngModel)]="data.name">
+    </mat-form-field><br>
+    <mat-form-field>
+      <mat-label>Description du Projet</mat-label>
+      <input matInput [(ngModel)]="data.description">
+    </mat-form-field><br>
+    <mat-form-field>
+      <mat-label>Date Debut Projet</mat-label>
+      <input matInput [(ngModel)]="data.dateDebut" [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field><br>
+    <mat-form-field>
+      <mat-label>Date Fin Projet</mat-label>
+      <input matInput [(ngModel)]="data.dateFin" [matDatepicker]="picker2">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
   </div>
-</div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Annuler</button>
+    <button mat-button (click)="onValid()" cdkFocusInitial>Valider</button>
+  </div>
