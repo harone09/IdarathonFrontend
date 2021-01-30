@@ -17,7 +17,7 @@
       <a mat-list-item href="#" class="white">
         <mat-icon class="sky-blue">dashboard</mat-icon>
         &nbsp; Mes Projets</a>
-      <a mat-list-item href="#" class="white">
+      <a mat-list-item routerLink="roulement" class="white">
         <mat-icon class="sky-blue" >work</mat-icon>
         &nbsp;Mode de travail</a>
       <a mat-list-item href="#" class="white">
@@ -43,7 +43,7 @@
         mat-icon-button
         (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
-        <mat-icon class="sky-blue"aria-label="Side nav toggle icon">menu</mat-icon>
+        <mat-icon class="sky-blue" aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span></span>
     </mat-toolbar>

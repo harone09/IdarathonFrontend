@@ -1,0 +1,40 @@
+
+<div>
+<form [formGroup]="form" >
+
+  <h1 mat-dialog-title> Mode de Travail</h1>
+
+<div mat-dialog-content class="controles-container glass" >
+
+  <mat-form-field>
+    <mat-label >Mode de travail :</mat-label >
+    <mat-select formControlName="mode">
+      <mat-option>None</mat-option>
+      <ng-container *ngFor="let i of modes">
+        <mat-option value="{{i.value}}">{{i.value}}</mat-option>
+      </ng-container>
+    </mat-select>
+  </mat-form-field>
+
+    <mat-form-field>
+      <mat-label >Roulement :</mat-label >
+      <mat-select formControlName="roulement" >
+        <ng-container *ngFor="let i of roulements">
+          <mat-option value="{{i.id}}">{{i.value}}</mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label >A partir de :</mat-label >
+          <input matInput formControlName="date" [matDatepicker]="picker"/>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+</div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button (click)="onSave()" cdkFocusInitial>Update</button>
+  </div>
+</form>
+</div>

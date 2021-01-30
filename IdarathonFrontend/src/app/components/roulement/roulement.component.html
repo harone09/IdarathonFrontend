@@ -1,0 +1,108 @@
+
+<br>
+<br>
+<div class="mat-toolbar-row glass rounded-border border-stats">
+
+  <div class="glass rounded-border" style="margin-right: 1%"><h3 class="table-font stat-card">PRESENTIEL</h3><p class="stat-card-content">{{statPRES}} PERSONNEL</p></div>
+  <div class="glass rounded-border" style="margin-right: 1%"><h3 class="table-font stat-card" >DISTANTIEL</h3><p class="stat-card-content">{{statDIS}} PERSONNEL</p></div>
+  <div class="glass rounded-border" style="margin-right: 1%"><h3 class="table-font stat-card" >EN ROULEMENT </h3 ><p class="stat-card-content">{{statROUL}} PERSONNEL</p></div>
+  <div class="glass rounded-border" style="margin-right: 1%"><h3 class="table-font stat-card" >AUTORISATION</h3><p class="stat-card-content">{{statAUT}} PERSONNEL</p></div>
+
+</div>
+<br>
+<br>
+  <div class="glass rounded-border">
+    <div>
+      <br/>
+      <div><h2 style="display: inline; margin-left: 2.5% ">LISTE DU PERSONNEL</h2></div>
+      <div class="float-right ">
+      <button mat-raised-button mat-button color="primary" (click)="openRoulementDialog()" style="margin-right: 10px">Modifier le mode de travail</button>
+      <mat-form-field >
+        <input matInput (keyup)="applyFilter($any($event.target).value)"  placeholder="Search"/>
+      </mat-form-field>
+      </div>
+    </div>
+
+
+    <table mat-table matSort [dataSource]="dataSource"  class="mat-elevation-z8 glass">
+
+
+      <ng-container matColumnDef="selected">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element"> </td>
+      </ng-container>
+      <ng-container matColumnDef="Nom et Prenom">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-font">Nom et Prenom </th>
+        <td mat-cell *matCellDef="let element"> {{element.nom}} {{element.prenom}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Service">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-font"> Service </th>
+        <td mat-cell *matCellDef="let element"> {{element.service.service}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Profile">
+        <th mat-header-cell *matHeaderCellDef class="table-font"> Profile </th>
+        <td mat-cell *matCellDef="let element"> {{element.profile.profile}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Poste">
+        <th mat-header-cell *matHeaderCellDef class="table-font"> Poste </th>
+        <td mat-cell *matCellDef="let element"> {{element.poste.poste}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Mode de Travail">
+        <th mat-header-cell *matHeaderCellDef class="table-font"> Mode de Travail </th>
+        <td mat-cell *matCellDef="let element"> {{element.roulement.mode}} </td>
+      </ng-container>
+ <ng-container matColumnDef="En Ligne">
+        <th mat-header-cell *matHeaderCellDef class="table-font"> En Ligne </th>
+        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+      </ng-container>
+ <ng-container matColumnDef="Autorisations">
+        <th mat-header-cell *matHeaderCellDef class="table-font"> Autorisations </th>
+        <td mat-cell *matCellDef="let element"> <button mat-raised-button (click)="openAutorisationDialog(element.id)">Voir details</button> </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectUser(row)"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[2,5, 10, 20]" showFirstLastButtons class="glass "></mat-paginator>
+    <br>
+
+
+  </div>
+
+
+<!--
+
+<div>
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="weight">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight </th>
+    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="symbol">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>
+    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+-->

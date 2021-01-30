@@ -1,0 +1,46 @@
+Index: IdarathonFrontend/src/app/app-routing.module.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { NgModule } from '@angular/core';\r\nimport { Routes, RouterModule } from '@angular/router';\r\n\r\nconst routes: Routes = [];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forRoot(routes)],\r\n  exports: [RouterModule]\r\n})\r\nexport class AppRoutingModule { }\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IdarathonFrontend/src/app/app-routing.module.ts b/IdarathonFrontend/src/app/app-routing.module.ts
+--- a/IdarathonFrontend/src/app/app-routing.module.ts	(revision 546054626d01d96196bdcd6863607971c38c01f6)
++++ b/IdarathonFrontend/src/app/app-routing.module.ts	(date 1610712028987)
+@@ -1,7 +1,10 @@
+ import { NgModule } from '@angular/core';
+ import { Routes, RouterModule } from '@angular/router';
++import {RoulementComponent} from './roulement/roulement.component';
+ 
+-const routes: Routes = [];
++const routes: Routes = [
++  {path: 'roulement', component: RoulementComponent},
++];
+ 
+ @NgModule({
+   imports: [RouterModule.forRoot(routes)],
+Index: IdarathonFrontend/src/app/app.module.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { BrowserModule } from '@angular/platform-browser';\r\nimport { NgModule } from '@angular/core';\r\n\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent\r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class AppModule { }\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IdarathonFrontend/src/app/app.module.ts b/IdarathonFrontend/src/app/app.module.ts
+--- a/IdarathonFrontend/src/app/app.module.ts	(revision 546054626d01d96196bdcd6863607971c38c01f6)
++++ b/IdarathonFrontend/src/app/app.module.ts	(date 1610714140231)
+@@ -3,10 +3,12 @@
+ 
+ import { AppRoutingModule } from './app-routing.module';
+ import { AppComponent } from './app.component';
++import {RoulementComponent} from "./roulement/roulement.component";
+ 
+ @NgModule({
+   declarations: [
+-    AppComponent
++    AppComponent,
++    RoulementComponent
+   ],
+   imports: [
+     BrowserModule,

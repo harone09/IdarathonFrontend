@@ -14,24 +14,28 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
-import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatTableModule} from '@angular/material/table';
 import { AddProjectComponent } from './components/add-project/add-project.component';
 import { ListProjectComponent } from './components/list-project/list-project.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UpdateProjectComponent } from './components/update-project/update-project.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SideBarComponent } from './side-bar/side-bar.component';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatInputModule } from '@angular/material/input'
-import { MatFormField, MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import {MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import {MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { CdkColumnDef } from '@angular/cdk/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import {MatNativeDateModule, MatOptionModule} from '@angular/material/core';
 import { DeleteProjectComponent } from './components/delete-project/delete-project.component';
+import {RoulementComponent} from './components/roulement/roulement.component';
+import {AfficherAutorisationsComponent} from './components/afficher-autorisations/afficher-autorisations.component';
+import {UpdateRoulementComponent} from './components/update-roulement/update-roulement.component';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -42,7 +46,11 @@ import { DeleteProjectComponent } from './components/delete-project/delete-proje
     UpdateProjectComponent,
     SideBarComponent,
     LoginComponent,
-    DeleteProjectComponent
+    DeleteProjectComponent,
+    UpdateRoulementComponent,
+    RoulementComponent,
+    AfficherAutorisationsComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -73,8 +81,15 @@ import { DeleteProjectComponent } from './components/delete-project/delete-proje
     MatDatepickerModule,
     MatNativeDateModule,
     MatMomentDateModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatOptionModule,
+    MatSelectModule,
+
   ],
-  providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}},CdkColumnDef],
-  bootstrap: [AppComponent]
+  providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}, CdkColumnDef],
+  bootstrap: [AppComponent],
+  entryComponents: [UpdateRoulementComponent, AfficherAutorisationsComponent]
 })
 export class AppModule { }

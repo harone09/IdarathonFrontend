@@ -1,0 +1,40 @@
+Index: IdarathonFrontend/package.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n  \"name\": \"idarathon-frontend\",\r\n  \"version\": \"0.0.0\",\r\n  \"scripts\": {\r\n    \"ng\": \"ng\",\r\n    \"start\": \"ng serve\",\r\n    \"build\": \"ng build\",\r\n    \"test\": \"ng test\",\r\n    \"lint\": \"ng lint\",\r\n    \"e2e\": \"ng e2e\"\r\n  },\r\n  \"private\": true,\r\n  \"dependencies\": {\r\n    \"@angular/animations\": \"~11.0.5\",\r\n    \"@angular/cdk\": \"^11.0.3\",\r\n    \"@angular/common\": \"~11.0.5\",\r\n    \"@angular/compiler\": \"~11.0.5\",\r\n    \"@angular/core\": \"~11.0.5\",\r\n    \"@angular/forms\": \"~11.0.5\",\r\n    \"@angular/material\": \"^11.0.4\",\r\n    \"@angular/platform-browser\": \"~11.0.5\",\r\n    \"@angular/platform-browser-dynamic\": \"~11.0.5\",\r\n    \"@angular/router\": \"~11.0.5\",\r\n    \"rxjs\": \"~6.6.0\",\r\n    \"tslib\": \"^2.0.0\",\r\n    \"zone.js\": \"~0.10.2\"\r\n  },\r\n  \"devDependencies\": {\r\n    \"@angular-devkit/build-angular\": \"^0.1100.7\",\r\n    \"@angular/cli\": \"~11.0.5\",\r\n    \"@angular/compiler-cli\": \"~11.0.5\",\r\n    \"@types/jasmine\": \"~3.6.0\",\r\n    \"@types/node\": \"^12.11.1\",\r\n    \"codelyzer\": \"^6.0.0\",\r\n    \"jasmine-core\": \"~3.6.0\",\r\n    \"jasmine-spec-reporter\": \"~5.0.0\",\r\n    \"karma\": \"~5.1.0\",\r\n    \"karma-chrome-launcher\": \"~3.1.0\",\r\n    \"karma-coverage\": \"~2.0.3\",\r\n    \"karma-jasmine\": \"~4.0.0\",\r\n    \"karma-jasmine-html-reporter\": \"^1.5.0\",\r\n    \"protractor\": \"~7.0.0\",\r\n    \"ts-node\": \"~8.3.0\",\r\n    \"tslint\": \"~6.1.0\",\r\n    \"typescript\": \"~4.0.2\"\r\n  }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IdarathonFrontend/package.json b/IdarathonFrontend/package.json
+--- a/IdarathonFrontend/package.json	
++++ b/IdarathonFrontend/package.json	
+@@ -11,23 +11,25 @@
+   },
+   "private": true,
+   "dependencies": {
+-    "@angular/animations": "~11.0.5",
+-    "@angular/cdk": "^11.0.3",
++    "-": "0.0.1",
++    "@angular/animations": "^11.0.9",
++    "@angular/cdk": "^11.1.0",
+     "@angular/common": "~11.0.5",
+     "@angular/compiler": "~11.0.5",
+     "@angular/core": "~11.0.5",
+     "@angular/forms": "~11.0.5",
+-    "@angular/material": "^11.0.4",
++    "@angular/material": "^11.1.0",
+     "@angular/platform-browser": "~11.0.5",
+     "@angular/platform-browser-dynamic": "~11.0.5",
+     "@angular/router": "~11.0.5",
++    "g": "^2.0.1",
+     "rxjs": "~6.6.0",
+     "tslib": "^2.0.0",
+     "zone.js": "~0.10.2"
+   },
+   "devDependencies": {
+     "@angular-devkit/build-angular": "^0.1100.7",
+-    "@angular/cli": "~11.0.5",
++    "@angular/cli": "^11.0.7",
+     "@angular/compiler-cli": "~11.0.5",
+     "@types/jasmine": "~3.6.0",
+     "@types/node": "^12.11.1",
