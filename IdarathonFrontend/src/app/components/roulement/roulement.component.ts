@@ -94,9 +94,8 @@ export class RoulementComponent implements OnInit, AfterViewInit {
 
     dialogConfig.width = '60%';
     // @ts-ignore
-    dialogConfig.data = this.users.find(c => c.id === id);
+    dialogConfig.data = this.users.find(c => c.id === id).autorisation;
     // @ts-ignore
-    console.log('before: ' + this.users.find(c => c.id === id));
 
     this.dialog.open(AfficherAutorisationsComponent, dialogConfig);
   }
@@ -135,9 +134,19 @@ export class RoulementComponent implements OnInit, AfterViewInit {
       if (c.roulement.mode === 'Presentiel') { this.statPRES++; }
       else if (c.roulement.mode === 'Distantiel') { this.statDIS++; }
       else if (c.roulement.mode === 'Roulement') { this.statROUL++; }
-     // if (c.autorisations.length > 0) { this.statAUT++; }
+      if (c.autorisation.length > 0) {
+       /* let autValid = false;
+        c.autorisation.forEach(c2 => {
+          if (c2.dateDebut <= new Date() && c2.dateFin >= new Date() ){
+            autValid = true;
+          }
+        });
+        if (autValid)  {this.statAUT++; }*/
+        this.statAUT++;
+      }
     });
 
 }
 
+//////////////////calendar test
 }

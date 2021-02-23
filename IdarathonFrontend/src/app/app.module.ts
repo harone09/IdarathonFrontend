@@ -36,6 +36,13 @@ import {RoulementComponent} from './components/roulement/roulement.component';
 import {AfficherAutorisationsComponent} from './components/afficher-autorisations/afficher-autorisations.component';
 import {UpdateRoulementComponent} from './components/update-roulement/update-roulement.component';
 import {MatSelectModule} from '@angular/material/select';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatRadioModule} from '@angular/material/radio';
+// @ts-ignore
+import {MatTabsModule} from '@angular/material/tabs';
+import {ListPhaseComponent} from './components/list-phase/list-phase.component';
+
+import {HomeComponent} from './home/home.component';
 
 
 @NgModule({
@@ -50,6 +57,8 @@ import {MatSelectModule} from '@angular/material/select';
     UpdateRoulementComponent,
     RoulementComponent,
     AfficherAutorisationsComponent,
+    ListPhaseComponent,
+    HomeComponent,
 
   ],
   imports: [
@@ -86,6 +95,11 @@ import {MatSelectModule} from '@angular/material/select';
     ReactiveFormsModule,
     MatOptionModule,
     MatSelectModule,
+    MatTooltipModule,
+    MatRadioModule,
+    MatTabsModule,
+
+    /////////////////
 
   ],
   providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}, CdkColumnDef],

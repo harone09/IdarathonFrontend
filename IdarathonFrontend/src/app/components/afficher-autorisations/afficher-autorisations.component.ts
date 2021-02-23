@@ -20,12 +20,12 @@ export class AfficherAutorisationsComponent implements OnInit, AfterViewInit {
   auts: Autorisation[];
 
   constructor(public dialogRef: MatDialogRef<RoulementComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: User, public roulementService: RoulementService) {
+              @Inject(MAT_DIALOG_DATA) public data: Autorisation[], public roulementService: RoulementService) {
   }
 
   ngOnInit(): void {
 
-    this.getAuts(this.data.id);
+    this.getAuts();
 
 
   }
@@ -39,13 +39,12 @@ export class AfficherAutorisationsComponent implements OnInit, AfterViewInit {
     console.log(filterValue);
     this.dataSource.filter = filterValue;
   }
-  getAuts(id: number): void{
-    this.roulementService.getUserAuts(id).subscribe(c => {
-      this.auts = c;
-      console.log(c);
+  getAuts(): void{
+
+      this.auts = this.data;
       this.dataSource = new MatTableDataSource<Autorisation>(this.auts);
 
-    });
+
   }
 
 }

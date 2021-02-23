@@ -1,0 +1,99 @@
+grid-container{
+  margin:0px !important;
+}
+background-blue-linear{
+  background: linear-gradient(to right, #26D0CE, #1A2980) !important;
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+}
+
+.glass{
+
+  border:1px rgba(255,255,255,0.2) ;
+  border-radius: 100px ;
+  background:linear-gradient(50deg, rgba(255,255,255,0.1) 10%, rgba(255,255,255,0.8) 100%);
+  box-shadow:0px 1px 1px rgba(0,0,0,0.5) !important;
+  transition: all 0.3s ease-in-out;
+}
+.imgSize
+{
+  width:30%;
+  margin-top:-3%;
+  animation-duration: 5s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+
+  }
+
+  to {
+    margin-left: 0%;
+
+  }
+}
+
+.normal
+{
+  height:200px;
+  width:600px;
+  text-align: center;
+}
+.small
+{
+  height:100px;
+  width:400px;
+  text-align: center;
+}
+.large
+{
+  height:200px;
+  width:1000px;
+  text-align: center;
+}
+/* For width 400px and larger: */
+@media only screen and (min-width: 1500px) {
+  .backg
+  {
+
+    width: 1800px;}
+}
+@media only screen and (min-width: 1000px) {
+  .backg
+  {
+
+    width: 100%;}
+}
+@media only screen and (max-width: 900px) {
+  .backg
+  {
+    width: 900px;
+    margin-top: -27%;}
+}
+
+.glass:hover{
+  transform:scale(1.1);
+  background:linear-gradient(50deg, rgba(255,255,255,0.1) 10%, rgba(255,255,255,0.8) 100%);
+  box-shadow:0px 1px 1px rgba(0,0,0,0.5) ;
+}
+
+
+

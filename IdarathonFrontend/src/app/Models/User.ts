@@ -11,7 +11,7 @@ export interface User{
   password: string;
   roles: Role[];
   roulement: Roulement;
-  autorisations: Autorisation[];
+  autorisation: Autorisation[];
   nom: string;
   prenom: string;
   profile: Profile;

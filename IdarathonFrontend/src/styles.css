@@ -2,7 +2,7 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -53,4 +53,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .dark-blue
 {color: #0E3854;}
 /*FINAL*/
+
+.backdropBackground .mat-dialog-container {
+  background: linear-gradient(to right, #26D0CE, #1A2980) !important;
+}
 

@@ -1,0 +1,1253 @@
+Index: IdarathonFrontend/src/styles.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/* You can add global styles to this file, and also import other style files */\r\n\r\nhtml, body { height: 100%; }\r\nbody { margin: 0; font-family: Roboto, \"Helvetica Neue\", sans-serif; }\r\n\r\nhtml, body { height: 100%; }\r\nbody { margin: 0; font-family: Roboto, \"Helvetica Neue\", sans-serif; }\r\n\r\nhtml, body { height: 100%; }\r\nbody { margin: 0; font-family: Roboto, \"Helvetica Neue\", sans-serif; }\r\n\r\n.backdropBackground .mat-dialog-container {\r\n  background: linear-gradient(to right, #26D0CE, #1A2980) !important;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IdarathonFrontend/src/styles.css b/IdarathonFrontend/src/styles.css
+--- a/IdarathonFrontend/src/styles.css	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
++++ b/IdarathonFrontend/src/styles.css	(date 1612268010245)
+@@ -1,5 +1,5 @@
+ /* You can add global styles to this file, and also import other style files */
+-
++@import "../node_modules/angular-calendar/css/angular-calendar.css";
+ html, body { height: 100%; }
+ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+ 
+Index: IdarathonFrontend/src/app/side-bar/side-bar.component.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><mat-sidenav-container class=\"sidenav-container\" >\r\n  <mat-sidenav #drawer class=\"sidenav\" fixedInViewport style=\"background-color: #0E3854;\"\r\n               [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\r\n               [mode]=\"(isHandset$ | async) ? 'over' : 'side'\"\r\n               [opened]=\"(isHandset$ | async) === false\">\r\n    <mat-toolbar>\r\n      <img src=\"assets/images/Logo.PNG\" alt=\"logo\" style=\"width: 110%;\">\r\n    </mat-toolbar>\r\n    <img src=\"assets/images/photo.png\" alt=\"profil\" class=\"profil\" >\r\n    <h3 class=\"nav-text\">Marie Lorene &nbsp;<mat-icon class=\"sky-blue\" style=\"font-size: 18px;\"> border_color</mat-icon></h3>\r\n\r\n    <br/>\r\n    <mat-nav-list>\r\n      <a mat-list-item href=\"#\" class=\"white\">\r\n        <mat-icon class=\"sky-blue\"> insert_chart </mat-icon>\r\n        &nbsp;Tableau de bord</a>\r\n      <a mat-list-item href=\"#\" class=\"white\">\r\n        <mat-icon class=\"sky-blue\">dashboard</mat-icon>\r\n        &nbsp; Mes Projets</a>\r\n      <a mat-list-item routerLink=\"roulement\" class=\"white\">\r\n        <mat-icon class=\"sky-blue\" >work</mat-icon>\r\n        &nbsp;Mode de travail</a>\r\n      <a mat-list-item href=\"#\" class=\"white\">\r\n        <mat-icon class=\"sky-blue\">event_available</mat-icon>\r\n        &nbsp;Mes services</a>\r\n      <a mat-list-item href=\"#\" class=\"white\" >\r\n        <mat-icon class=\"sky-blue\"> forum</mat-icon>\r\n        &nbsp; Communication</a>\r\n      <a mat-list-item href=\"#\" class=\"white\">\r\n        <mat-icon class=\"sky-blue\">find_in_page</mat-icon>\r\n        &nbsp;Referentiels</a>\r\n      <br/>\r\n      <a mat-list-item href=\"#\" class=\"white\">\r\n        <mat-icon class=\"sky-blue\">subdirectory_arrow_left</mat-icon>\r\n        &nbsp; Se déconnécter</a>\r\n    </mat-nav-list>\r\n  </mat-sidenav>\r\n  <mat-sidenav-content style=\"background: linear-gradient(to right, #26D0CE, #1A2980) !important;\">\r\n    <mat-toolbar style=\"background-color: #0E3854;\">\r\n      <button\r\n        type=\"button\"\r\n        aria-label=\"Toggle sidenav\"\r\n        mat-icon-button\r\n        (click)=\"drawer.toggle()\"\r\n        *ngIf=\"isHandset$ | async\">\r\n        <mat-icon class=\"sky-blue\" aria-label=\"Side nav toggle icon\">menu</mat-icon>\r\n      </button>\r\n      <span></span>\r\n    </mat-toolbar>\r\n\r\n    <router-outlet></router-outlet>\r\n\r\n  </mat-sidenav-content>\r\n</mat-sidenav-container>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IdarathonFrontend/src/app/side-bar/side-bar.component.html b/IdarathonFrontend/src/app/side-bar/side-bar.component.html
+--- a/IdarathonFrontend/src/app/side-bar/side-bar.component.html	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
++++ b/IdarathonFrontend/src/app/side-bar/side-bar.component.html	(date 1614111508334)
+@@ -17,7 +17,7 @@
+       <a mat-list-item href="#" class="white">
+         <mat-icon class="sky-blue">dashboard</mat-icon>
+         &nbsp; Mes Projets</a>
+-      <a mat-list-item routerLink="roulement" class="white">
++      <a mat-list-item class="white">
+         <mat-icon class="sky-blue" >work</mat-icon>
+         &nbsp;Mode de travail</a>
+       <a mat-list-item href="#" class="white">
+Index: IdarathonFrontend/src/app/components/afficher-autorisations/afficher-autorisations.component.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';\r\nimport {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';\r\nimport {RoulementComponent} from '../roulement/roulement.component';\r\n// import {RoulemmentDialog} from '../../Models/RoulemmentDialog';\r\nimport {User} from '../../Models/User';\r\nimport {MatTableDataSource} from '@angular/material/table';\r\nimport {Autorisation} from '../../Models/Autorisation';\r\nimport {RoulementService} from '../../services/roulement.service';\r\n\r\n@Component({\r\n  selector: 'app-afficher-autorisations',\r\n  templateUrl: './afficher-autorisations.component.html',\r\n  styleUrls: ['./afficher-autorisations.component.css']\r\n})\r\nexport class AfficherAutorisationsComponent implements OnInit, AfterViewInit {\r\n\r\n  displayedColumns: string[] = ['Autorisation', 'motif', 'DateDebut', 'DateFin'];\r\n  dataSource = new MatTableDataSource<Autorisation>();\r\n  // @ts-ignore\r\n  auts: Autorisation[];\r\n\r\n  constructor(public dialogRef: MatDialogRef<RoulementComponent>,\r\n              @Inject(MAT_DIALOG_DATA) public data: User, public roulementService: RoulementService) {\r\n  }\r\n\r\n  ngOnInit(): void {\r\n\r\n    this.getAuts(this.data.id);\r\n\r\n\r\n  }\r\n\r\n  ngAfterViewInit(): void  {\r\n\r\n  }\r\n  applyFilter(filterValue: string): void{\r\n    filterValue = filterValue.trim();\r\n    filterValue = filterValue.toLowerCase();\r\n    console.log(filterValue);\r\n    this.dataSource.filter = filterValue;\r\n  }\r\n  getAuts(id: number): void{\r\n    this.roulementService.getUserAuts(id).subscribe(c => {\r\n      this.auts = c;\r\n      console.log(c);\r\n      this.dataSource = new MatTableDataSource<Autorisation>(this.auts);\r\n\r\n    });\r\n  }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IdarathonFrontend/src/app/components/afficher-autorisations/afficher-autorisations.component.ts b/IdarathonFrontend/src/app/components/afficher-autorisations/afficher-autorisations.component.ts
+--- a/IdarathonFrontend/src/app/components/afficher-autorisations/afficher-autorisations.component.ts	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
++++ b/IdarathonFrontend/src/app/components/afficher-autorisations/afficher-autorisations.component.ts	(date 1612265342094)
+@@ -20,12 +20,12 @@
+   auts: Autorisation[];
+ 
+   constructor(public dialogRef: MatDialogRef<RoulementComponent>,
+-              @Inject(MAT_DIALOG_DATA) public data: User, public roulementService: RoulementService) {
++              @Inject(MAT_DIALOG_DATA) public data: Autorisation[], public roulementService: RoulementService) {
+   }
+ 
+   ngOnInit(): void {
+ 
+-    this.getAuts(this.data.id);
++    this.getAuts();
+ 
+ 
+   }
+@@ -39,13 +39,12 @@
+     console.log(filterValue);
+     this.dataSource.filter = filterValue;
+   }
+-  getAuts(id: number): void{
+-    this.roulementService.getUserAuts(id).subscribe(c => {
+-      this.auts = c;
+-      console.log(c);
++  getAuts(): void{
++
++      this.auts = this.data;
+       this.dataSource = new MatTableDataSource<Autorisation>(this.auts);
+ 
+-    });
++
+   }
+ 
+ }
+Index: IdarathonFrontend/src/app/app.module.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { MatMomentDateModule } from '@angular/material-moment-adapter';\r\nimport { LoginComponent } from './login/login.component';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport { NgModule } from '@angular/core';\r\n\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { LayoutModule } from '@angular/cdk/layout';\r\nimport { MatToolbarModule } from '@angular/material/toolbar';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatSidenavModule } from '@angular/material/sidenav';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { MatListModule } from '@angular/material/list';\r\nimport { MatGridListModule } from '@angular/material/grid-list';\r\nimport { MatCardModule } from '@angular/material/card';\r\nimport { MatMenuModule } from '@angular/material/menu';\r\nimport {BrowserAnimationsModule} from '@angular/platform-browser/animations';\r\nimport {MatTreeModule} from '@angular/material/tree';\r\nimport {MatTableModule} from '@angular/material/table';\r\nimport { AddProjectComponent } from './components/add-project/add-project.component';\r\nimport { ListProjectComponent } from './components/list-project/list-project.component';\r\nimport { HttpClientModule } from '@angular/common/http';\r\nimport { UpdateProjectComponent } from './components/update-project/update-project.component';\r\nimport {FormsModule, ReactiveFormsModule} from '@angular/forms';\r\nimport { SideBarComponent } from './side-bar/side-bar.component';\r\nimport {MatPaginatorModule } from '@angular/material/paginator';\r\nimport { MatInputModule } from '@angular/material/input';\r\nimport {MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';\r\nimport { CdkColumnDef } from '@angular/cdk/table';\r\nimport { MatSortModule } from '@angular/material/sort';\r\nimport { MatDialogModule } from '@angular/material/dialog';\r\nimport { MatDatepickerModule } from '@angular/material/datepicker';\r\nimport {MatNativeDateModule, MatOptionModule} from '@angular/material/core';\r\nimport { DeleteProjectComponent } from './components/delete-project/delete-project.component';\r\nimport {RoulementComponent} from './components/roulement/roulement.component';\r\nimport {AfficherAutorisationsComponent} from './components/afficher-autorisations/afficher-autorisations.component';\r\nimport {UpdateRoulementComponent} from './components/update-roulement/update-roulement.component';\r\nimport {MatSelectModule} from '@angular/material/select';\r\n\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent,\r\n    AddProjectComponent,\r\n    ListProjectComponent,\r\n    UpdateProjectComponent,\r\n    SideBarComponent,\r\n    LoginComponent,\r\n    DeleteProjectComponent,\r\n    UpdateRoulementComponent,\r\n    RoulementComponent,\r\n    AfficherAutorisationsComponent,\r\n\r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    BrowserAnimationsModule,\r\n    HttpClientModule,\r\n    FormsModule,\r\n    LayoutModule,\r\n    MatTreeModule,\r\n    AppRoutingModule,\r\n    LayoutModule,\r\n    MatToolbarModule,\r\n    MatButtonModule,\r\n    MatSidenavModule,\r\n    MatIconModule,\r\n    MatListModule,\r\n    MatGridListModule,\r\n    MatCardModule,\r\n    MatMenuModule,\r\n    MatTableModule,\r\n    MatFormFieldModule,\r\n    MatIconModule,\r\n    MatPaginatorModule,\r\n    MatListModule,\r\n    MatInputModule,\r\n    MatSortModule,\r\n    MatDialogModule,\r\n    MatDatepickerModule,\r\n    MatNativeDateModule,\r\n    MatMomentDateModule,\r\n    MatPaginatorModule,\r\n    MatFormFieldModule,\r\n    ReactiveFormsModule,\r\n    MatOptionModule,\r\n    MatSelectModule,\r\n\r\n  ],\r\n  providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}, CdkColumnDef],\r\n  bootstrap: [AppComponent],\r\n  entryComponents: [UpdateRoulementComponent, AfficherAutorisationsComponent]\r\n})\r\nexport class AppModule { }\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IdarathonFrontend/src/app/app.module.ts b/IdarathonFrontend/src/app/app.module.ts
+--- a/IdarathonFrontend/src/app/app.module.ts	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
++++ b/IdarathonFrontend/src/app/app.module.ts	(date 1612268216086)
+@@ -86,6 +86,7 @@
+     ReactiveFormsModule,
+     MatOptionModule,
+     MatSelectModule,
++    /////////////////
+ 
+   ],
+   providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}, CdkColumnDef],
+Index: IdarathonFrontend/src/app/home/home.component.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><p>home works!</p>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IdarathonFrontend/src/app/home/home.component.html b/IdarathonFrontend/src/app/home/home.component.html
+--- a/IdarathonFrontend/src/app/home/home.component.html	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
++++ b/IdarathonFrontend/src/app/home/home.component.html	(date 1614111089437)
+@@ -1,1 +1,71 @@
+-<p>home works!</p>
++
++<mat-grid-list cols="2" rowHeight="250px">
++  <mat-grid-tile [colspan]="2"  [rowspan]="2">
++    <img class="backg" src="assets/images/backg1.PNG">
++  </mat-grid-tile>
++  <mat-grid-tile [colspan]="2" >
++    <div class="glass large">
++      <br/>
++      <h1 style="color:#0E3854;font-weight: bold;"><mat-icon> bubble_chart</mat-icon> IDARATASK<mat-icon> bubble_chart</mat-icon></h1>
++      <p style="font-size: 20px;">
++        Votre meilleure solution pour assurer un environnement de collaboration et d’interaction<br/>
++        entre les différents utilisateurs du système en exploitant le développement<br/>
++        technologique, et les nouvelles techniques d’information et communication,<br/>
++        pour simplifier le suivi des employés et le travail à distance.
++      </p>
++    </div>
++  </mat-grid-tile>
++  <mat-grid-tile [colspan]="2">
++    <div class="glass small">
++      <br/><br/>
++      <h1 style="color:#0E3854;font-weight: bold;"><mat-icon> bubble_chart</mat-icon> NOS SERVICES <mat-icon> bubble_chart</mat-icon></h1>
++    </div>
++  </mat-grid-tile>
++  <mat-grid-tile>
++    <div class="glass normal">
++      <br/>
++      <img class="imgSize" src="assets/images/travailler.png" alt="gestion">
++      <p style="font-size: 20px;">
++        Travailler à distance avec confiance<br/>
++        et collaborer efficacement<br/>
++        au sein d'une équipe en télétravail
++      </p>
++    </div>
++  </mat-grid-tile>
++  <mat-grid-tile>
++    <div class="glass normal">
++      <img class="imgSize" src="assets/images/Communiquer.png" alt="gestion">
++      <p style="font-size: 20px;">
++        Communication intranet entre<br/>
++        les employés de votre<br/>
++        établissement
++      </p>
++    </div>
++  </mat-grid-tile>
++  <mat-grid-tile>
++    <div class="glass normal">
++      <img class="imgSize" src="assets/images/documents.png" alt="gestion">
++      <p style="font-size: 20px;">
++        Partager vos livrables
++        et documents <br/>
++        avec toute ergonomie
++
++      </p>
++    </div>
++  </mat-grid-tile>
++  <mat-grid-tile>
++    <div class="glass normal">
++      <img class="imgSize" src="assets/images/gestion.png" alt="gestion">
++      <p style="font-size: 20px;">
++        Gestion de roulement et supervision <br/>
++        du rendement de vos employés
++      </p>
++    </div>
++    <br/><br/>
++  </mat-grid-tile>
++  <mat-grid-tile [colspan]="2" [rowspan]="2" >
++    <img style="margin-top: 8%;" src="assets/images/footer.png">
++  </mat-grid-tile>
++</mat-grid-list>
++
++
+Index: IdarathonFrontend/src/app/components/roulement/roulement.component.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\n<br>\r\n<br>\r\n<div class=\"mat-toolbar-row glass rounded-border border-stats\">\r\n\r\n  <div class=\"glass rounded-border\" style=\"margin-right: 1%\"><h3 class=\"table-font stat-card\">PRESENTIEL</h3><p class=\"stat-card-content\">{{statPRES}} PERSONNEL</p></div>\r\n  <div class=\"glass rounded-border\" style=\"margin-right: 1%\"><h3 class=\"table-font stat-card\" >DISTANTIEL</h3><p class=\"stat-card-content\">{{statDIS}} PERSONNEL</p></div>\r\n  <div class=\"glass rounded-border\" style=\"margin-right: 1%\"><h3 class=\"table-font stat-card\" >EN ROULEMENT </h3 ><p class=\"stat-card-content\">{{statROUL}} PERSONNEL</p></div>\r\n  <div class=\"glass rounded-border\" style=\"margin-right: 1%\"><h3 class=\"table-font stat-card\" >AUTORISATION</h3><p class=\"stat-card-content\">{{statAUT}} PERSONNEL</p></div>\r\n\r\n</div>\r\n<br>\r\n<br>\r\n  <div class=\"glass rounded-border\">\r\n    <div>\r\n      <br/>\r\n      <div><h2 style=\"display: inline; margin-left: 2.5% \">LISTE DU PERSONNEL</h2></div>\r\n      <div class=\"float-right \">\r\n      <button mat-raised-button mat-button color=\"primary\" (click)=\"openRoulementDialog()\" style=\"margin-right: 10px\">Modifier le mode de travail</button>\r\n      <mat-form-field >\r\n        <input matInput (keyup)=\"applyFilter($any($event.target).value)\"  placeholder=\"Search\"/>\r\n      </mat-form-field>\r\n      </div>\r\n    </div>\r\n\r\n\r\n    <table mat-table matSort [dataSource]=\"dataSource\"  class=\"mat-elevation-z8 glass\">\r\n\r\n\r\n      <ng-container matColumnDef=\"selected\">\r\n        <th mat-header-cell *matHeaderCellDef> </th>\r\n        <td mat-cell *matCellDef=\"let element\"> </td>\r\n      </ng-container>\r\n      <ng-container matColumnDef=\"Nom et Prenom\">\r\n        <th mat-header-cell *matHeaderCellDef mat-sort-header class=\"table-font\">Nom et Prenom </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.nom}} {{element.prenom}}</td>\r\n      </ng-container>\r\n\r\n      <ng-container matColumnDef=\"Service\">\r\n        <th mat-header-cell *matHeaderCellDef mat-sort-header class=\"table-font\"> Service </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.service.service}} </td>\r\n      </ng-container>\r\n\r\n      <ng-container matColumnDef=\"Profile\">\r\n        <th mat-header-cell *matHeaderCellDef class=\"table-font\"> Profile </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.profile.profile}} </td>\r\n      </ng-container>\r\n\r\n      <ng-container matColumnDef=\"Poste\">\r\n        <th mat-header-cell *matHeaderCellDef class=\"table-font\"> Poste </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.poste.poste}} </td>\r\n      </ng-container>\r\n      <ng-container matColumnDef=\"Mode de Travail\">\r\n        <th mat-header-cell *matHeaderCellDef class=\"table-font\"> Mode de Travail </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.roulement.mode}} </td>\r\n      </ng-container>\r\n <ng-container matColumnDef=\"En Ligne\">\r\n        <th mat-header-cell *matHeaderCellDef class=\"table-font\"> En Ligne </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.symbol}} </td>\r\n      </ng-container>\r\n <ng-container matColumnDef=\"Autorisations\">\r\n        <th mat-header-cell *matHeaderCellDef class=\"table-font\"> Autorisations </th>\r\n        <td mat-cell *matCellDef=\"let element\"> <button mat-raised-button (click)=\"openAutorisationDialog(element.id)\">Voir details</button> </td>\r\n      </ng-container>\r\n\r\n      <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n      <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\" (click)=\"selectUser(row)\"></tr>\r\n    </table>\r\n\r\n    <mat-paginator [pageSizeOptions]=\"[2,5, 10, 20]\" showFirstLastButtons class=\"glass \"></mat-paginator>\r\n    <br>\r\n\r\n\r\n  </div>\r\n\r\n\r\n<!--\r\n\r\n<div>\r\n\r\n<table mat-table [dataSource]=\"dataSource\" matSort class=\"mat-elevation-z8\">\r\n\r\n  <ng-container matColumnDef=\"position\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.position}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"name\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"weight\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.weight}} </td>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"symbol\">\r\n    <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>\r\n    <td mat-cell *matCellDef=\"let element\"> {{element.symbol}} </td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n</table>\r\n<mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\r\n</div>\r\n-->\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IdarathonFrontend/src/app/components/roulement/roulement.component.html b/IdarathonFrontend/src/app/components/roulement/roulement.component.html
+--- a/IdarathonFrontend/src/app/components/roulement/roulement.component.html	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
++++ b/IdarathonFrontend/src/app/components/roulement/roulement.component.html	(date 1612268225539)
+@@ -73,6 +73,12 @@
+ 
+   </div>
+ 
++<br>
++<br>
++<div class="mat-toolbar-row glass rounded-border border-stats">
++  <div><h2 style="display: inline; margin-left: 2.5% ">CALENDRIER DE {{selectedUser.nom}} {{selectedUser.prenom}}</h2></div>
++
++</div>
+ 
+ <!--
+ 
+Index: IdarathonFrontend/src/app/home/home.component.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IdarathonFrontend/src/app/home/home.component.css b/IdarathonFrontend/src/app/home/home.component.css
+--- a/IdarathonFrontend/src/app/home/home.component.css	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
++++ b/IdarathonFrontend/src/app/home/home.component.css	(date 1614111251222)
+@@ -1,0 +1,86 @@
++
++grid-container{
++margin:0px !important;
++}
++ background-blue-linear{
++background: linear-gradient(to right, #26D0CE, #1A2980) !important;
++ }
++
++  .dashboard-card {
++position: absolute;
++    top: 15px;
++    left: 15px;
++    right: 15px;
++    bottom: 15px;
++  }
++
++   .more-button {
++position: absolute;
++     top: 5px;
++     right: 10px;
++   }
++
++    .dashboard-card-content {
++text-align: center;
++    }
++
++     .glass{
++
++border:1px rgba(255,255,255,0.2) ;
++       border-radius: 100px ;
++       background:linear-gradient(50deg, rgba(255,255,255,0.1) 10%, rgba(255,255,255,0.8) 100%);
++       box-shadow:0px 1px 1px rgba(0,0,0,0.5) !important;
++       transition: all 0.3s ease-in-out;
++     }
++      .imgSize
++      {
++  width:30%;
++        margin-top:-3%;
++        animation-duration: 5s;
++        animation-name: slidein;
++      }
++
++@keyframes slidein {
++from {
++margin-left: 100%;
++}
++
++ to {
++margin-left: 0%;
++ }
++}
++
++ .normal
++ {
++  height:200px;
++   width:600px;
++   text-align: center;
++ }
++  .small
++  {
++  height:100px;
++    width:400px;
++    text-align: center;
++  }
++   .large
++   {
++  height:200px;
++     width:1000px;
++     text-align: center;
++   }
++/* For width 400px and larger: */
++@media only screen and (min-width: 1200px) {
++.backg
++{margin-top:-5%;}
++}
++ .glass:hover{
++transform:scale(1.1);
++   background:linear-gradient(50deg, rgba(255,255,255,0.1) 10%, rgba(255,255,255,0.8) 100%);
++   box-shadow:0px 1px 1px rgba(0,0,0,0.5) ;
++ }
++
++
++
++
++
++
+Index: IdarathonFrontend/src/app/components/roulement/roulement.component.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';\r\nimport {RoulementService} from '../../services/roulement.service';\r\nimport {User} from '../../Models/User';\r\nimport {MatDialog, MatDialogConfig} from '@angular/material/dialog';\r\nimport {UpdateRoulementComponent} from '../update-roulement/update-roulement.component';\r\nimport {AfficherAutorisationsComponent} from '../afficher-autorisations/afficher-autorisations.component';\r\n// import {PeriodicElement} from './PeriodicElement';\r\nimport {MatTableDataSource} from '@angular/material/table';\r\nimport {MatSort} from '@angular/material/sort';\r\nimport {MatPaginator} from '@angular/material/paginator';\r\n\r\n\r\n@Component({\r\n  selector: 'app-roulement',\r\n  templateUrl: './roulement.component.html',\r\n  styleUrls: ['./roulement.component.css']\r\n})\r\nexport class RoulementComponent implements OnInit, AfterViewInit {\r\n /* ELEMENT_DATA: PeriodicElement[] = [\r\n    {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},\r\n    {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},\r\n    {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},\r\n    {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},\r\n    {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},\r\n    {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},\r\n    {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},\r\n    {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},\r\n    {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},\r\n    {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},\r\n  ];\r\n\r\n  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];\r\n  dataSource = new MatTableDataSource(this.ELEMENT_DATA);\r\n*/\r\n\r\n\r\n\r\n  ////////////// DECLARATIONS\r\n\r\n  displayedColumns: string[] = ['selected', 'Nom et Prenom', 'Service', 'Profile', 'Poste', 'Mode de Travail', 'En Ligne', 'Autorisations'];\r\n  // @ts-ignore\r\n  selectedUser: User ;\r\n  users: User[];\r\n  selected = false;\r\n  dataSource = new MatTableDataSource<User>();\r\n  // @ts-ignore\r\n  @ViewChild(MatSort) sort: MatSort;\r\n  // @ts-ignore\r\n  @ViewChild(MatPaginator) paginator: MatPaginator;\r\n\r\n  statPRES = 0;\r\n  statDIS = 0;\r\n  statROUL = 0;\r\n  statAUT = 0;\r\n\r\n  //////////////////// CONSTRUCTOR\r\n\r\n  constructor(public roulementService: RoulementService, public dialog: MatDialog) {\r\n    this.users = [];\r\n    // this.sort = new MatSort();\r\n    // this.paginator= new MatPaginator();\r\n\r\n  }\r\n\r\n///////////////////// INITIALISATION\r\n  ngOnInit(): void {\r\n    this.getUsers();\r\n  }\r\n  ngAfterViewInit(): void  {\r\n    this.dataSource.paginator = this.paginator;\r\n  }\r\n\r\n////////////////////// MEETHODES\r\n  openRoulementDialog(): void {\r\n    if (this.selected){\r\n      const dialogConfig = new MatDialogConfig();\r\n      dialogConfig.autoFocus = true;\r\n      dialogConfig.width = '20%';\r\n      dialogConfig.panelClass = 'backdropBackground';\r\n\r\n      dialogConfig.data = this.selectedUser;\r\n      const dialogRef = this.dialog.open(UpdateRoulementComponent, dialogConfig);\r\n      dialogRef.afterClosed().subscribe(c => {\r\n        this.getStasts();\r\n      });\r\n    }\r\n\r\n  }\r\n\r\n  openAutorisationDialog(id: number): void {\r\n    const dialogConfig = new MatDialogConfig();\r\n    dialogConfig.autoFocus = true;\r\n    dialogConfig.panelClass = 'backdropBackground';\r\n\r\n    dialogConfig.width = '60%';\r\n    // @ts-ignore\r\n    dialogConfig.data = this.users.find(c => c.id === id);\r\n    // @ts-ignore\r\n    console.log('before: ' + this.users.find(c => c.id === id));\r\n\r\n    this.dialog.open(AfficherAutorisationsComponent, dialogConfig);\r\n  }\r\n   applyFilter(filterValue: string): void{\r\n    filterValue = filterValue.trim();\r\n    filterValue = filterValue.toLowerCase();\r\n    console.log(filterValue);\r\n    this.dataSource.filter = filterValue;\r\n  }\r\n  selectUser(u: User): void{\r\n    this.selectedUser = u;\r\n    this.selected = true;\r\n    console.log(this.selectedUser);\r\n  }\r\n  public getUsers(): void{\r\n    this.roulementService.getUsers().subscribe(c => {\r\n        this.users = c;\r\n        this.dataSource = new MatTableDataSource<User>(this.users);\r\n        this.selectedUser = this.users[0];\r\n        this.dataSource.sort = this.sort;\r\n        this.dataSource.paginator = this.paginator;\r\n        this.getStasts();\r\n\r\n\r\n    });\r\n  }\r\n  public resetStats(): void{\r\n    this.statPRES = 0;\r\n    this.statDIS = 0;\r\n    this.statROUL = 0;\r\n    this.statAUT = 0;\r\n  }\r\n  public getStasts(): void{\r\n    this.resetStats();\r\n    this.users.forEach(c => {\r\n      if (c.roulement.mode === 'Presentiel') { this.statPRES++; }\r\n      else if (c.roulement.mode === 'Distantiel') { this.statDIS++; }\r\n      else if (c.roulement.mode === 'Roulement') { this.statROUL++; }\r\n     // if (c.autorisations.length > 0) { this.statAUT++; }\r\n    });\r\n\r\n}\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IdarathonFrontend/src/app/components/roulement/roulement.component.ts b/IdarathonFrontend/src/app/components/roulement/roulement.component.ts
+--- a/IdarathonFrontend/src/app/components/roulement/roulement.component.ts	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
++++ b/IdarathonFrontend/src/app/components/roulement/roulement.component.ts	(date 1612268313957)
+@@ -94,9 +94,8 @@
+ 
+     dialogConfig.width = '60%';
+     // @ts-ignore
+-    dialogConfig.data = this.users.find(c => c.id === id);
++    dialogConfig.data = this.users.find(c => c.id === id).autorisation;
+     // @ts-ignore
+-    console.log('before: ' + this.users.find(c => c.id === id));
+ 
+     this.dialog.open(AfficherAutorisationsComponent, dialogConfig);
+   }
+@@ -135,9 +134,19 @@
+       if (c.roulement.mode === 'Presentiel') { this.statPRES++; }
+       else if (c.roulement.mode === 'Distantiel') { this.statDIS++; }
+       else if (c.roulement.mode === 'Roulement') { this.statROUL++; }
+-     // if (c.autorisations.length > 0) { this.statAUT++; }
++      if (c.autorisation.length > 0) {
++       /* let autValid = false;
++        c.autorisation.forEach(c2 => {
++          if (c2.dateDebut <= new Date() && c2.dateFin >= new Date() ){
++            autValid = true;
++          }
++        });
++        if (autValid)  {this.statAUT++; }*/
++        this.statAUT++;
++      }
+     });
+ 
+ }
+ 
++//////////////////calendar test
+ }
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_1_28_2021_7_37_PM__Default_Changelist_1.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_1_28_2021_7_37_PM__Default_Changelist_1.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_1_28_2021_7_37_PM__Default_Changelist_1.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_1_28_2021_7_37_PM__Default_Changelist_1.xml	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
++++ /dev/null	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_1_28_2021_7_37_PM_[Default_Changelist]1" date="1611859136426" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_28_2021_7_37_PM_[Default_Changelist]1/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 1/28/2021 7:37 PM [Default Changelist]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_1_23_2021_2_19_PM_[Default_Changelist]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_1_23_2021_2_19_PM_[Default_Changelist]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_1_23_2021_2_19_PM_[Default_Changelist]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_1_23_2021_2_19_PM_[Default_Changelist]/shelved.patch	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
++++ /dev/null	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
+@@ -1,46 +0,0 @@
+-Index: IdarathonFrontend/src/app/app-routing.module.ts
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>import { NgModule } from '@angular/core';\r\nimport { Routes, RouterModule } from '@angular/router';\r\n\r\nconst routes: Routes = [];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forRoot(routes)],\r\n  exports: [RouterModule]\r\n})\r\nexport class AppRoutingModule { }\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/IdarathonFrontend/src/app/app-routing.module.ts b/IdarathonFrontend/src/app/app-routing.module.ts
+---- a/IdarathonFrontend/src/app/app-routing.module.ts	(revision 546054626d01d96196bdcd6863607971c38c01f6)
+-+++ b/IdarathonFrontend/src/app/app-routing.module.ts	(date 1610712028987)
+-@@ -1,7 +1,10 @@
+- import { NgModule } from '@angular/core';
+- import { Routes, RouterModule } from '@angular/router';
+-+import {RoulementComponent} from './roulement/roulement.component';
+- 
+--const routes: Routes = [];
+-+const routes: Routes = [
+-+  {path: 'roulement', component: RoulementComponent},
+-+];
+- 
+- @NgModule({
+-   imports: [RouterModule.forRoot(routes)],
+-Index: IdarathonFrontend/src/app/app.module.ts
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>import { BrowserModule } from '@angular/platform-browser';\r\nimport { NgModule } from '@angular/core';\r\n\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent\r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class AppModule { }\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/IdarathonFrontend/src/app/app.module.ts b/IdarathonFrontend/src/app/app.module.ts
+---- a/IdarathonFrontend/src/app/app.module.ts	(revision 546054626d01d96196bdcd6863607971c38c01f6)
+-+++ b/IdarathonFrontend/src/app/app.module.ts	(date 1610714140231)
+-@@ -3,10 +3,12 @@
+- 
+- import { AppRoutingModule } from './app-routing.module';
+- import { AppComponent } from './app.component';
+-+import {RoulementComponent} from "./roulement/roulement.component";
+- 
+- @NgModule({
+-   declarations: [
+--    AppComponent
+-+    AppComponent,
+-+    RoulementComponent
+-   ],
+-   imports: [
+-     BrowserModule,
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_1_28_2021_7_37_PM_[Default_Changelist]1/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_1_28_2021_7_37_PM_[Default_Changelist]1/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_1_28_2021_7_37_PM_[Default_Changelist]1/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_1_28_2021_7_37_PM_[Default_Changelist]1/shelved.patch	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
++++ /dev/null	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
+@@ -1,306 +0,0 @@
+-Index: IdarathonFrontend/src/app/app-routing.module.ts
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>import { UpdateProjectComponent } from './components/update-project/update-project.component';\r\nimport { ListProjectComponent } from './components/list-project/list-project.component';\r\nimport { AddProjectComponent } from './components/add-project/add-project.component';\r\nimport { NgModule } from '@angular/core';\r\nimport { Routes, RouterModule } from '@angular/router';\r\nimport { LoginComponent } from './login/login.component';\r\nimport { HomeComponent } from './home/home.component';\r\n\r\nconst routes: Routes = [\r\n  { path: \"\", redirectTo:\"login\",pathMatch:\"full\"},\r\n  { path: 'projets', component: ListProjectComponent },\r\n  { path: 'projets/:id', component: UpdateProjectComponent },\r\n  { path: 'projetsAdd', component: AddProjectComponent},\r\n  { path: \"login\", component:LoginComponent},\r\n  { path: \"home\", component:HomeComponent}\r\n\r\n];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forRoot(routes)],\r\n  exports: [RouterModule]\r\n})\r\nexport class AppRoutingModule { }\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/IdarathonFrontend/src/app/app-routing.module.ts b/IdarathonFrontend/src/app/app-routing.module.ts
+---- a/IdarathonFrontend/src/app/app-routing.module.ts	
+-+++ b/IdarathonFrontend/src/app/app-routing.module.ts	
+-@@ -4,15 +4,21 @@
+- import { NgModule } from '@angular/core';
+- import { Routes, RouterModule } from '@angular/router';
+- import { LoginComponent } from './login/login.component';
+-+import { RoulementComponent } from './components/roulement/roulement.component';
+- import { HomeComponent } from './home/home.component';
+-+import {UpdateRoulementComponent} from "./components/update-roulement/update-roulement.component";
+- 
+- const routes: Routes = [
+--  { path: "", redirectTo:"login",pathMatch:"full"},
+-+  /*{ path: "", redirectTo:"login",pathMatch:"full"},
+-   { path: 'projets', component: ListProjectComponent },
+-   { path: 'projets/:id', component: UpdateProjectComponent },
+-   { path: 'projetsAdd', component: AddProjectComponent},
+--  { path: "login", component:LoginComponent},
+--  { path: "home", component:HomeComponent}
+-+  { path: "login", component: LoginComponent},
+-+  { path: "home", component: HomeComponent}*/
+-+  { path: '', redirectTo: 'roulement', pathMatch: 'full'},
+-+  { path: 'roulement', component: RoulementComponent},
+-+  { path: 'uroulement', component: UpdateRoulementComponent}
+-+
+- 
+- ];
+- 
+-Index: IdarathonFrontend/src/app/app.module.ts
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>import { BrowserModule } from '@angular/platform-browser';\r\nimport { NgModule } from '@angular/core';\r\n\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { LayoutModule } from '@angular/cdk/layout';\r\nimport { MatToolbarModule } from '@angular/material/toolbar';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatSidenavModule } from '@angular/material/sidenav';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { MatListModule } from '@angular/material/list';\r\nimport { MatGridListModule } from '@angular/material/grid-list';\r\nimport { MatCardModule } from '@angular/material/card';\r\nimport { MatMenuModule } from '@angular/material/menu';\r\nimport {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';\r\nimport {MatTreeModule} from '@angular/material/tree';\r\nimport {MatTableModule} from '@angular/material/table';\r\nimport { AddProjectComponent } from './components/add-project/add-project.component';\r\nimport { ListProjectComponent } from './components/list-project/list-project.component';\r\nimport { HttpClientModule } from '@angular/common/http';\r\nimport { UpdateProjectComponent } from './components/update-project/update-project.component';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { AddPhaseComponent } from './components_phase/add-phase/add-phase.component';\r\nimport { ListPhaseComponent } from './components_phase/list-phase/list-phase.component';\r\nimport { UpdatePhaseComponent } from './components_phase/update-phase/update-phase.component';\r\nimport { SideBarComponent } from './side-bar/side-bar.component';\r\n\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent,\r\n    AddProjectComponent,\r\n    ListProjectComponent,\r\n    UpdateProjectComponent,\r\n    AddPhaseComponent,\r\n    ListPhaseComponent,\r\n    UpdatePhaseComponent,\r\n    SideBarComponent\r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    BrowserAnimationsModule,\r\n    HttpClientModule,\r\n    FormsModule,\r\n    LayoutModule,\r\n    MatToolbarModule,\r\n    MatButtonModule,\r\n    MatSidenavModule,\r\n    MatIconModule,\r\n    MatListModule,\r\n    MatGridListModule,\r\n    MatCardModule,\r\n    MatMenuModule,\r\n    MatTreeModule,\r\n    MatTableModule,\r\n    NoopAnimationsModule\r\n\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class AppModule { }\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/IdarathonFrontend/src/app/app.module.ts b/IdarathonFrontend/src/app/app.module.ts
+---- a/IdarathonFrontend/src/app/app.module.ts	
+-+++ b/IdarathonFrontend/src/app/app.module.ts	
+-@@ -19,11 +19,25 @@
+- import { ListProjectComponent } from './components/list-project/list-project.component';
+- import { HttpClientModule } from '@angular/common/http';
+- import { UpdateProjectComponent } from './components/update-project/update-project.component';
+--import { FormsModule } from '@angular/forms';
+--import { AddPhaseComponent } from './components_phase/add-phase/add-phase.component';
+--import { ListPhaseComponent } from './components_phase/list-phase/list-phase.component';
+--import { UpdatePhaseComponent } from './components_phase/update-phase/update-phase.component';
+-+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+-+//import { AddPhaseComponent } from './components_phase/add-phase/add-phase.component';
+-+//import { ListPhaseComponent } from './components_phase/list-phase/list-phase.component';
+-+//import { UpdatePhaseComponent } from './components_phase/update-phase/update-phase.component';
+- import { SideBarComponent } from './side-bar/side-bar.component';
+-+import { LoginComponent} from './login/login.component';
+-+import {RoulementComponent} from './components/roulement/roulement.component';
+-+import { UpdateRoulementComponent } from './components/update-roulement/update-roulement.component';
+-+import { AfficherAutorisationsComponent } from './components/afficher-autorisations/afficher-autorisations.component';
+-+import {MatDialogModule} from '@angular/material/dialog';
+-+import {MatFormFieldModule} from '@angular/material/form-field';
+-+import {MatSelectModule} from '@angular/material/select';
+-+import {HomeComponent} from './home/home.component';
+-+import {MatInputModule} from '@angular/material/input';
+-+
+-+import {MatDatepickerModule} from '@angular/material/datepicker';
+-+import {MatNativeDateModule} from "@angular/material/core";
+-+import {MatSortModule} from "@angular/material/sort";
+-+import {MatPaginatorModule} from "@angular/material/paginator";
+- 
+- 
+- @NgModule({
+-@@ -32,10 +46,15 @@
+-     AddProjectComponent,
+-     ListProjectComponent,
+-     UpdateProjectComponent,
+--    AddPhaseComponent,
+--    ListPhaseComponent,
+--    UpdatePhaseComponent,
+--    SideBarComponent
+-+    LoginComponent,
+-+    RoulementComponent,
+-+    HomeComponent,
+-+   // AddPhaseComponent,
+-+   // ListPhaseComponent,
+-+   // UpdatePhaseComponent,
+-+    SideBarComponent,
+-+   UpdateRoulementComponent,
+-+   AfficherAutorisationsComponent
+-   ],
+-   imports: [
+-     BrowserModule,
+-@@ -54,10 +73,20 @@
+-     MatMenuModule,
+-     MatTreeModule,
+-     MatTableModule,
+--    NoopAnimationsModule
+-+    NoopAnimationsModule,
+-+    MatDialogModule,
+-+    MatFormFieldModule,
+-+    MatSelectModule,
+-+    MatInputModule,
+-+    ReactiveFormsModule,
+-+    MatDatepickerModule,
+-+    MatNativeDateModule,
+-+    MatSortModule,
+-+    MatPaginatorModule,
+- 
+-   ],
+-   providers: [],
+--  bootstrap: [AppComponent]
+-+  bootstrap: [AppComponent],
+-+  entryComponents:[AfficherAutorisationsComponent, UpdateRoulementComponent]
+- })
+- export class AppModule { }
+-Index: IdarathonFrontend/package-lock.json
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/IdarathonFrontend/package-lock.json b/IdarathonFrontend/package-lock.json
+---- a/IdarathonFrontend/package-lock.json	
+-+++ b/IdarathonFrontend/package-lock.json	
+-@@ -4,13 +4,18 @@
+-   "lockfileVersion": 1,
+-   "requires": true,
+-   "dependencies": {
+-+    "-": {
+-+      "version": "0.0.1",
+-+      "resolved": "https://registry.npmjs.org/-/-/--0.0.1.tgz",
+-+      "integrity": "sha512-3HfneK3DGAm05fpyj20sT3apkNcvPpCuccOThOPdzz8sY7GgQGe0l93XH9bt+YzibcTIgUAIMoyVJI740RtgyQ=="
+-+    },
+-     "@angular-devkit/architect": {
+--      "version": "0.1100.5",
+--      "resolved": "https://registry.npmjs.org/@angular-devkit/architect/-/architect-0.1100.5.tgz",
+--      "integrity": "sha512-yOYfucNouc1doTbcGbCNMXGMSc36+j97XpdNoeGyzFQ7GwezLAro0a9gxc5PdOxndfelkND7J1JuOjxdW5O17A==",
+-+      "version": "0.1100.7",
+-+      "resolved": "https://registry.npmjs.org/@angular-devkit/architect/-/architect-0.1100.7.tgz",
+-+      "integrity": "sha512-b2zv2yiRbdhJ7hJfZsAvGYcqgh2DVtc7gRIPo1eDPvOAKrenmZ4zo/v0PRYScrTsPzqmoCokNA5nIwufwUEnuA==",
+-       "dev": true,
+-       "requires": {
+--        "@angular-devkit/core": "11.0.5",
+-+        "@angular-devkit/core": "11.0.7",
+-         "rxjs": "6.6.3"
+-       }
+-     },
+-@@ -166,9 +171,9 @@
+-       }
+-     },
+-     "@angular-devkit/core": {
+--      "version": "11.0.5",
+--      "resolved": "https://registry.npmjs.org/@angular-devkit/core/-/core-11.0.5.tgz",
+--      "integrity": "sha512-hwV8fjF8JNPJkiVWw8MNzeIfDo01aD/OAOlC4L5rQnVHn+i2EiU3brSDmFqyeHPPV3h/QjuBkS3tkN7gSnVWaQ==",
+-+      "version": "11.0.7",
+-+      "resolved": "https://registry.npmjs.org/@angular-devkit/core/-/core-11.0.7.tgz",
+-+      "integrity": "sha512-1GKnIT++YSUHpzzRx9QC0+8yOw4wy+ZpiJVDlroPSeK4FGrTCJqJKenkfRjVFRFOSrzTiJds+IU6kI4+bFbw9g==",
+-       "dev": true,
+-       "requires": {
+-         "ajv": "6.12.6",
+-@@ -179,28 +184,28 @@
+-       }
+-     },
+-     "@angular-devkit/schematics": {
+--      "version": "11.0.5",
+--      "resolved": "https://registry.npmjs.org/@angular-devkit/schematics/-/schematics-11.0.5.tgz",
+--      "integrity": "sha512-0NKGC8Nf/4vvDpWKB7bwxIazvNnNHnZBX6XlyBXNl+fW8tpTef3PNMJMSErTz9LFnuv61vsKbc36u/Ek2YChWg==",
+-+      "version": "11.0.7",
+-+      "resolved": "https://registry.npmjs.org/@angular-devkit/schematics/-/schematics-11.0.7.tgz",
+-+      "integrity": "sha512-mKkXWmSTlZYjQO4i7xUX+bG1E9h9Ke3GgGQQouA+kth06IPO+VcywLQNsui4qcyLDUjyo8CaX+44aoSXoX3Tgg==",
+-       "dev": true,
+-       "requires": {
+--        "@angular-devkit/core": "11.0.5",
+-+        "@angular-devkit/core": "11.0.7",
+-         "ora": "5.1.0",
+-         "rxjs": "6.6.3"
+-       }
+-     },
+-     "@angular/animations": {
+--      "version": "11.0.5",
+--      "resolved": "https://registry.npmjs.org/@angular/animations/-/animations-11.0.5.tgz",
+--      "integrity": "sha512-ghE/xDTYuEWkKNZtioH9JBrSlux0MLHzWoE7tNP+XMaplt80lCm979vWsEBO3/xpQLRmRlGPul6RacCAoeqogg==",
+-+      "version": "11.0.9",
+-+      "resolved": "https://registry.npmjs.org/@angular/animations/-/animations-11.0.9.tgz",
+-+      "integrity": "sha512-/KsMBUbRTqp29CNLbRIe4/8IxWxhnbUUZWqULaySnRDDW/p2m4miPcFVSp4zjrDZPqdXSibDiCyTiWmQ5PTuKA==",
+-       "requires": {
+-         "tslib": "^2.0.0"
+-       }
+-     },
+-     "@angular/cdk": {
+--      "version": "11.0.3",
+--      "resolved": "https://registry.npmjs.org/@angular/cdk/-/cdk-11.0.3.tgz",
+--      "integrity": "sha512-hgbJXvZURKBnZawwxUrsZE/3a+HCJh2UhoLIng3cn5Q+WIW/4a37knDl8B9DYKBWrCqeINXNcUHVSKkWc/gjCA==",
+-+      "version": "11.1.0",
+-+      "resolved": "https://registry.npmjs.org/@angular/cdk/-/cdk-11.1.0.tgz",
+-+      "integrity": "sha512-yFEHtdp0o/xGnYebrU/PQqWVIlB7SaP3cSviq/LTv/h2EINn3PzU/Zhdhg0k0fk09BrKoS+o8AVIddduIdDpYw==",
+-       "requires": {
+-         "parse5": "^5.0.0",
+-         "tslib": "^2.0.0"
+-@@ -215,16 +220,16 @@
+-       }
+-     },
+-     "@angular/cli": {
+--      "version": "11.0.5",
+--      "resolved": "https://registry.npmjs.org/@angular/cli/-/cli-11.0.5.tgz",
+--      "integrity": "sha512-k4j/2z7qkuigJ1shH0McW1wW63clhrbrg98FK4/KWhU/sce5AgVjuHDQFycAclTwHesf7Vs6Gzt7zGlqUmeKIg==",
+-+      "version": "11.0.7",
+-+      "resolved": "https://registry.npmjs.org/@angular/cli/-/cli-11.0.7.tgz",
+-+      "integrity": "sha512-gKHfkkjduNi5OFaEKd75UKpZ7gg9h2+eVoo7ufrZda87PLP7v/XB/QoFz9zj6tTM2/IWkKhJhcsE2MLyIOTUZA==",
+-       "dev": true,
+-       "requires": {
+--        "@angular-devkit/architect": "0.1100.5",
+--        "@angular-devkit/core": "11.0.5",
+--        "@angular-devkit/schematics": "11.0.5",
+--        "@schematics/angular": "11.0.5",
+--        "@schematics/update": "0.1100.5",
+-+        "@angular-devkit/architect": "0.1100.7",
+-+        "@angular-devkit/core": "11.0.7",
+-+        "@angular-devkit/schematics": "11.0.7",
+-+        "@schematics/angular": "11.0.7",
+-+        "@schematics/update": "0.1100.7",
+-         "@yarnpkg/lockfile": "1.1.0",
+-         "ansi-colors": "4.1.1",
+-         "debug": "4.2.0",
+-@@ -412,9 +417,9 @@
+-       }
+-     },
+-     "@angular/material": {
+--      "version": "11.0.4",
+--      "resolved": "https://registry.npmjs.org/@angular/material/-/material-11.0.4.tgz",
+--      "integrity": "sha512-yjJEl3UbJxyKZFAbhvyZGphDfhtR1vo0AnDEE3KBxAOp9oD4r7paL6ER9rSXFoNRjST56tIDbNtG/wZNtH0XDQ==",
+-+      "version": "11.1.0",
+-+      "resolved": "https://registry.npmjs.org/@angular/material/-/material-11.1.0.tgz",
+-+      "integrity": "sha512-k7KpU8T32mmi1vaU27SSZ/gwO2YpxEUCTSzAOZNK8YugAXC+A5xPYLcNU8dlzBP4EW7XBkeSSnUacpI199YcyQ==",
+-       "requires": {
+-         "tslib": "^2.0.0"
+-       }
+-@@ -1616,24 +1621,24 @@
+-       }
+-     },
+-     "@schematics/angular": {
+--      "version": "11.0.5",
+--      "resolved": "https://registry.npmjs.org/@schematics/angular/-/angular-11.0.5.tgz",
+--      "integrity": "sha512-7p2wweoJYhim8YUy3ih1SrPGqRsa6+aEFbYgo9v4zt7b3tOva8SvkbC2alayK74fclzQ7umqa6xAwvWhy8ORvg==",
+-+      "version": "11.0.7",
+-+      "resolved": "https://registry.npmjs.org/@schematics/angular/-/angular-11.0.7.tgz",
+-+      "integrity": "sha512-h8ZmHJvMcvre3rzaDBu1b5RxaaBe008kcniFNeks5nHTQRqDL/5Thg4YhIgH9VQ9Yf8U4atLjRJK5PG1OzmgDA==",
+-       "dev": true,
+-       "requires": {
+--        "@angular-devkit/core": "11.0.5",
+--        "@angular-devkit/schematics": "11.0.5",
+-+        "@angular-devkit/core": "11.0.7",
+-+        "@angular-devkit/schematics": "11.0.7",
+-         "jsonc-parser": "2.3.1"
+-       }
+-     },
+-     "@schematics/update": {
+--      "version": "0.1100.5",
+--      "resolved": "https://registry.npmjs.org/@schematics/update/-/update-0.1100.5.tgz",
+--      "integrity": "sha512-BYtKKuiWsrlc4FMW3bRyl4tm6lWNMTi8oql/mtkSgH7V5eMmaLDJtM+zDl+qyC/KHPxbHTfoHDapfv1tITSWjA==",
+-+      "version": "0.1100.7",
+-+      "resolved": "https://registry.npmjs.org/@schematics/update/-/update-0.1100.7.tgz",
+-+      "integrity": "sha512-DXxWr4FwzhhpzDLivpA/QgXrnBHLSL5EQHcLLRylg3TISJFGKEQGYMYPw5V2ZS43hPM2zoJI/Dkcoo/PHBmNYw==",
+-       "dev": true,
+-       "requires": {
+--        "@angular-devkit/core": "11.0.5",
+--        "@angular-devkit/schematics": "11.0.5",
+-+        "@angular-devkit/core": "11.0.7",
+-+        "@angular-devkit/schematics": "11.0.7",
+-         "@yarnpkg/lockfile": "1.1.0",
+-         "ini": "1.3.6",
+-         "npm-package-arg": "^8.0.0",
+-@@ -5255,6 +5260,11 @@
+-       "integrity": "sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==",
+-       "dev": true
+-     },
+-+    "g": {
+-+      "version": "2.0.1",
+-+      "resolved": "https://registry.npmjs.org/g/-/g-2.0.1.tgz",
+-+      "integrity": "sha1-C1lj69DKcOO8jGdmk0oCGCHIuFc="
+-+    },
+-     "genfun": {
+-       "version": "5.0.0",
+-       "resolved": "https://registry.npmjs.org/genfun/-/genfun-5.0.0.tgz",
+-Index: IdarathonFrontend/tsconfig.app.json
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>/* To learn more about this file see: https://angular.io/config/tsconfig. */\r\n{\r\n  \"extends\": \"./tsconfig.json\",\r\n  \"compilerOptions\": {\r\n    \"outDir\": \"./out-tsc/app\",\r\n    \"types\": []\r\n  },\r\n  \"files\": [\r\n    \"src/main.ts\",\r\n    \"src/polyfills.ts\"\r\n  ],\r\n  \"include\": [\r\n    \"src/**/*.d.ts\"\r\n  ]\r\n}\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/IdarathonFrontend/tsconfig.app.json b/IdarathonFrontend/tsconfig.app.json
+---- a/IdarathonFrontend/tsconfig.app.json	
+-+++ b/IdarathonFrontend/tsconfig.app.json	
+-@@ -11,5 +11,8 @@
+-   ],
+-   "include": [
+-     "src/**/*.d.ts"
+--  ]
+-+  ]/*,///// harone addition
+-+  "angularCompilerOptions": {
+-+    "enableIvy": false
+-+  }*/
+- }
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_1_30_2021_11_44_AM_[Default_Changelist]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_1_30_2021_11_44_AM_[Default_Changelist]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_1_30_2021_11_44_AM_[Default_Changelist]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_1_30_2021_11_44_AM_[Default_Changelist]/shelved.patch	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
++++ /dev/null	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
+@@ -1,216 +0,0 @@
+-Index: IdarathonFrontend/src/app/components/list-project/list-project.component.css
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>table\r\n{\u200B\u200B\u200B\u200B\u200B\u200B\u200B\u200B\r\n  width:80%;\r\n}\u200B\u200B\u200B\u200B\u200B\u200B\u200B\u200B\r\n.glass{\u200B\u200B\u200B\u200B\u200B\u200B\u200B\u200B\r\n  border:1px rgba(255,255,255,0.2) ;\r\nbackground:linear-gradient(50deg, rgba(255,255,255,0.1) 10%, rgba(255,255,255,0.8) 100%);\r\nbox-shadow:0px 1px 1px rgba(0,0,0,0.5) !important;\r\ntransition: all 0.3s ease-in-out;\r\n}\u200B\u200B\u200B\u200B\u200B\u200B\u200B\u200B\r\n.mat-mini-fab.mat-accent\r\n{\u200B\u200B\u200B\u200B\u200B\u200B\u200B\u200B\r\n  background:white !important;\r\n}\u200B\u200B\u200B\u200B\u200B\u200B\u200B\u200B\r\n.white\r\n{\u200B\u200B\u200B\u200B\u200B\u200B\u200B\u200Bcolor:white;}\u200B\u200B\u200B\u200B\u200B\u200B\u200B\u200B\r\n.blue\r\n{\u200B\u200B\u200B\u200B\u200B\u200B\u200B\u200Bcolor:#1A2980;}\u200B\u200B\u200B\u200B\u200B\u200B\u200B\u200B\r\n.sky-blue\r\n{\u200B\u200B\u200B\u200B\u200B\u200B\u200B\u200Bcolor:#26D0CE;}\u200B\u200B\u200B\u200B\u200B\u200B\u200B\u200B\r\n.dark-blue\r\n{\u200B\u200B\u200B\u200B\u200B\u200B\u200B\u200Bcolor: #0E3854;}\u200B\u200B\u200B\u200B\u200B\u200B\u200B\u200B\r\n\r\n\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/IdarathonFrontend/src/app/components/list-project/list-project.component.css b/IdarathonFrontend/src/app/components/list-project/list-project.component.css
+---- a/IdarathonFrontend/src/app/components/list-project/list-project.component.css	(revision 4030fdcc1f717785a8b5da552ee759c60b117717)
+-+++ b/IdarathonFrontend/src/app/components/list-project/list-project.component.css	(date 1611932762766)
+-@@ -1,24 +1,23 @@
+--table
+--{​​​​​​​​
+-+table{
+-   width:80%;
+--}​​​​​​​​
+--.glass{​​​​​​​​
+-+}
+-+.glass{
+-   border:1px rgba(255,255,255,0.2) ;
+- background:linear-gradient(50deg, rgba(255,255,255,0.1) 10%, rgba(255,255,255,0.8) 100%);
+- box-shadow:0px 1px 1px rgba(0,0,0,0.5) !important;
+- transition: all 0.3s ease-in-out;
+--}​​​​​​​​
+-+}
+- .mat-mini-fab.mat-accent
+--{​​​​​​​​
+-+{
+-   background:white !important;
+--}​​​​​​​​
+-+}
+- .white
+--{​​​​​​​​color:white;}​​​​​​​​
+-+{background-color :white;}
+- .blue
+--{​​​​​​​​color:#1A2980;}​​​​​​​​
+-+{background-color:#1A2980;}
+- .sky-blue
+--{​​​​​​​​color:#26D0CE;}​​​​​​​​
+-+{background-color:#26D0CE;}
+- .dark-blue
+--{​​​​​​​​color: #0E3854;}​​​​​​​​
+-+{background-color: #0E3854;}
+- 
+- 
+-Index: IdarathonFrontend/src/styles.css
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>/* You can add global styles to this file, and also import other style files */\r\n\r\nhtml, body { height: 100%; }\r\nbody { margin: 0; font-family: Roboto, \"Helvetica Neue\", sans-serif; }\r\n\r\nhtml, body { height: 100%; }\r\nbody { margin: 0; font-family: Roboto, \"Helvetica Neue\", sans-serif; }\r\n\r\nhtml, body { height: 100%; }\r\nbody { margin: 0; font-family: Roboto, \"Helvetica Neue\", sans-serif; }\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/IdarathonFrontend/src/styles.css b/IdarathonFrontend/src/styles.css
+---- a/IdarathonFrontend/src/styles.css	(revision 4030fdcc1f717785a8b5da552ee759c60b117717)
+-+++ b/IdarathonFrontend/src/styles.css	(date 1612000669021)
+-@@ -8,3 +8,7 @@
+- 
+- html, body { height: 100%; }
+- body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+-+
+-+.backdropBackground .mat-dialog-container {
+-+  background: linear-gradient(to right, #26D0CE, #1A2980) !important;
+-+}
+-Index: IdarathonFrontend/src/app/side-bar/side-bar.component.html
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><mat-sidenav-container class=\"sidenav-container\" >\r\n  <mat-sidenav #drawer class=\"sidenav\" fixedInViewport style=\"background-color: #0E3854;\"\r\n               [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\r\n               [mode]=\"(isHandset$ | async) ? 'over' : 'side'\"\r\n               [opened]=\"(isHandset$ | async) === false\">\r\n    <mat-toolbar>\r\n      <img src=\"assets/images/Logo.PNG\" alt=\"logo\" style=\"width: 110%;\">\r\n    </mat-toolbar>\r\n    <img src=\"assets/images/photo.png\" alt=\"profil\" class=\"profil\" >\r\n    <h3 class=\"nav-text\">Marie Lorene &nbsp;<mat-icon class=\"sky-blue\" style=\"font-size: 18px;\"> border_color</mat-icon></h3>\r\n\r\n    <br/>\r\n    <mat-nav-list>\r\n      <a mat-list-item href=\"#\" class=\"white\">\r\n        <mat-icon class=\"sky-blue\"> insert_chart </mat-icon>\r\n        &nbsp;Tableau de bord</a>\r\n      <a mat-list-item href=\"#\" class=\"white\">\r\n        <mat-icon class=\"sky-blue\">dashboard</mat-icon>\r\n        &nbsp; Mes Projets</a>\r\n      <a mat-list-item href=\"#\" class=\"white\">\r\n        <mat-icon class=\"sky-blue\" >work</mat-icon>\r\n        &nbsp;Mode de travail</a>\r\n      <a mat-list-item href=\"#\" class=\"white\">\r\n        <mat-icon class=\"sky-blue\">event_available</mat-icon>\r\n        &nbsp;Mes services</a>\r\n      <a mat-list-item href=\"#\" class=\"white\" >\r\n        <mat-icon class=\"sky-blue\"> forum</mat-icon>\r\n        &nbsp; Communication</a>\r\n      <a mat-list-item href=\"#\" class=\"white\">\r\n        <mat-icon class=\"sky-blue\">find_in_page</mat-icon>\r\n        &nbsp;Referentiels</a>\r\n      <br/>\r\n      <a mat-list-item href=\"#\" class=\"white\">\r\n        <mat-icon class=\"sky-blue\">subdirectory_arrow_left</mat-icon>\r\n        &nbsp; Se déconnécter</a>\r\n    </mat-nav-list>\r\n  </mat-sidenav>\r\n  <mat-sidenav-content style=\"background: linear-gradient(to right, #26D0CE, #1A2980) !important;\">\r\n    <mat-toolbar style=\"background-color: #0E3854;\">\r\n      <button\r\n        type=\"button\"\r\n        aria-label=\"Toggle sidenav\"\r\n        mat-icon-button\r\n        (click)=\"drawer.toggle()\"\r\n        *ngIf=\"isHandset$ | async\">\r\n        <mat-icon class=\"sky-blue\"aria-label=\"Side nav toggle icon\">menu</mat-icon>\r\n      </button>\r\n      <span></span>\r\n    </mat-toolbar>\r\n\r\n    <router-outlet></router-outlet>\r\n\r\n  </mat-sidenav-content>\r\n</mat-sidenav-container>\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/IdarathonFrontend/src/app/side-bar/side-bar.component.html b/IdarathonFrontend/src/app/side-bar/side-bar.component.html
+---- a/IdarathonFrontend/src/app/side-bar/side-bar.component.html	(revision 4030fdcc1f717785a8b5da552ee759c60b117717)
+-+++ b/IdarathonFrontend/src/app/side-bar/side-bar.component.html	(date 1612003229348)
+-@@ -17,7 +17,7 @@
+-       <a mat-list-item href="#" class="white">
+-         <mat-icon class="sky-blue">dashboard</mat-icon>
+-         &nbsp; Mes Projets</a>
+--      <a mat-list-item href="#" class="white">
+-+      <a mat-list-item routerLink="roulement" class="white">
+-         <mat-icon class="sky-blue" >work</mat-icon>
+-         &nbsp;Mode de travail</a>
+-       <a mat-list-item href="#" class="white">
+-Index: IdarathonFrontend/src/app/app-routing.module.ts
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>import { UpdateProjectComponent } from './components/update-project/update-project.component';\r\nimport { ListProjectComponent } from './components/list-project/list-project.component';\r\nimport { AddProjectComponent } from './components/add-project/add-project.component';\r\nimport { NgModule } from '@angular/core';\r\nimport { Routes, RouterModule } from '@angular/router';\r\nimport { LoginComponent } from './login/login.component';\r\nimport { HomeComponent } from './home/home.component';\r\n\r\nconst routes: Routes = [\r\n  { path: \"\", redirectTo:\"login\",pathMatch:\"full\"},\r\n  { path: 'projets', component: ListProjectComponent },\r\n  { path: 'projets/:id', component: UpdateProjectComponent },\r\n  { path: 'projetsAdd', component: AddProjectComponent},\r\n  { path: \"login\", component:LoginComponent},\r\n  { path: \"home\", component:HomeComponent}\r\n\r\n];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forRoot(routes)],\r\n  exports: [RouterModule]\r\n})\r\nexport class AppRoutingModule { }\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/IdarathonFrontend/src/app/app-routing.module.ts b/IdarathonFrontend/src/app/app-routing.module.ts
+---- a/IdarathonFrontend/src/app/app-routing.module.ts	(revision 4030fdcc1f717785a8b5da552ee759c60b117717)
+-+++ b/IdarathonFrontend/src/app/app-routing.module.ts	(date 1612003337316)
+-@@ -4,15 +4,19 @@
+- import { NgModule } from '@angular/core';
+- import { Routes, RouterModule } from '@angular/router';
+- import { LoginComponent } from './login/login.component';
+-+import { RoulementComponent } from './components/roulement/roulement.component';
+- import { HomeComponent } from './home/home.component';
+-+import {UpdateRoulementComponent} from "./components/update-roulement/update-roulement.component";
+- 
+- const routes: Routes = [
+-   { path: "", redirectTo:"login",pathMatch:"full"},
+-   { path: 'projets', component: ListProjectComponent },
+-   { path: 'projets/:id', component: UpdateProjectComponent },
+-   { path: 'projetsAdd', component: AddProjectComponent},
+--  { path: "login", component:LoginComponent},
+--  { path: "home", component:HomeComponent}
+-+  { path: "login", component: LoginComponent},
+-+  { path: "home", component: HomeComponent},
+-+  { path: 'roulement', component: RoulementComponent},
+-+
+- 
+- ];
+- 
+-Index: IdarathonFrontend/src/app/app.module.ts
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>import { LoginComponent } from './login/login.component';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport { NgModule } from '@angular/core';\r\n\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { LayoutModule } from '@angular/cdk/layout';\r\nimport { MatToolbarModule } from '@angular/material/toolbar';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatSidenavModule } from '@angular/material/sidenav';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { MatListModule } from '@angular/material/list';\r\nimport { MatGridListModule } from '@angular/material/grid-list';\r\nimport { MatCardModule } from '@angular/material/card';\r\nimport { MatMenuModule } from '@angular/material/menu';\r\nimport {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';\r\nimport {MatTreeModule} from '@angular/material/tree';\r\nimport {MatTableModule} from '@angular/material/table';\r\nimport { AddProjectComponent } from './components/add-project/add-project.component';\r\nimport { ListProjectComponent } from './components/list-project/list-project.component';\r\nimport { HttpClientModule } from '@angular/common/http';\r\nimport { UpdateProjectComponent } from './components/update-project/update-project.component';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { SideBarComponent } from './side-bar/side-bar.component';\r\n\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent,\r\n    AddProjectComponent,\r\n    ListProjectComponent,\r\n    UpdateProjectComponent,\r\n    SideBarComponent,\r\n    LoginComponent\r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    BrowserAnimationsModule,\r\n    HttpClientModule,\r\n    FormsModule,\r\n    LayoutModule,\r\n    MatToolbarModule,\r\n    MatButtonModule,\r\n    MatSidenavModule,\r\n    MatIconModule,\r\n    MatListModule,\r\n    MatGridListModule,\r\n    MatCardModule,\r\n    MatMenuModule,\r\n    MatTreeModule,\r\n    MatTableModule,\r\n    NoopAnimationsModule\r\n\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class AppModule { }\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/IdarathonFrontend/src/app/app.module.ts b/IdarathonFrontend/src/app/app.module.ts
+---- a/IdarathonFrontend/src/app/app.module.ts	(revision 4030fdcc1f717785a8b5da552ee759c60b117717)
+-+++ b/IdarathonFrontend/src/app/app.module.ts	(date 1611859081596)
+-@@ -1,4 +1,3 @@
+--import { LoginComponent } from './login/login.component';
+- import { BrowserModule } from '@angular/platform-browser';
+- import { NgModule } from '@angular/core';
+- 
+-@@ -20,8 +19,25 @@
+- import { ListProjectComponent } from './components/list-project/list-project.component';
+- import { HttpClientModule } from '@angular/common/http';
+- import { UpdateProjectComponent } from './components/update-project/update-project.component';
+--import { FormsModule } from '@angular/forms';
+-+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+-+//import { AddPhaseComponent } from './components_phase/add-phase/add-phase.component';
+-+//import { ListPhaseComponent } from './components_phase/list-phase/list-phase.component';
+-+//import { UpdatePhaseComponent } from './components_phase/update-phase/update-phase.component';
+- import { SideBarComponent } from './side-bar/side-bar.component';
+-+import { LoginComponent} from './login/login.component';
+-+import {RoulementComponent} from './components/roulement/roulement.component';
+-+import { UpdateRoulementComponent } from './components/update-roulement/update-roulement.component';
+-+import { AfficherAutorisationsComponent } from './components/afficher-autorisations/afficher-autorisations.component';
+-+import {MatDialogModule} from '@angular/material/dialog';
+-+import {MatFormFieldModule} from '@angular/material/form-field';
+-+import {MatSelectModule} from '@angular/material/select';
+-+import {HomeComponent} from './home/home.component';
+-+import {MatInputModule} from '@angular/material/input';
+-+
+-+import {MatDatepickerModule} from '@angular/material/datepicker';
+-+import {MatNativeDateModule} from "@angular/material/core";
+-+import {MatSortModule} from "@angular/material/sort";
+-+import {MatPaginatorModule} from "@angular/material/paginator";
+- 
+- 
+- @NgModule({
+-@@ -30,8 +46,15 @@
+-     AddProjectComponent,
+-     ListProjectComponent,
+-     UpdateProjectComponent,
+-+    LoginComponent,
+-+    RoulementComponent,
+-+    HomeComponent,
+-+   // AddPhaseComponent,
+-+   // ListPhaseComponent,
+-+   // UpdatePhaseComponent,
+-     SideBarComponent,
+--    LoginComponent
+-+   UpdateRoulementComponent,
+-+   AfficherAutorisationsComponent
+-   ],
+-   imports: [
+-     BrowserModule,
+-@@ -50,10 +73,20 @@
+-     MatMenuModule,
+-     MatTreeModule,
+-     MatTableModule,
+--    NoopAnimationsModule
+-+    NoopAnimationsModule,
+-+    MatDialogModule,
+-+    MatFormFieldModule,
+-+    MatSelectModule,
+-+    MatInputModule,
+-+    ReactiveFormsModule,
+-+    MatDatepickerModule,
+-+    MatNativeDateModule,
+-+    MatSortModule,
+-+    MatPaginatorModule,
+- 
+-   ],
+-   providers: [],
+--  bootstrap: [AppComponent]
+-+  bootstrap: [AppComponent],
+-+  entryComponents:[AfficherAutorisationsComponent, UpdateRoulementComponent]
+- })
+- export class AppModule { }
+-Index: IdarathonFrontend/tsconfig.app.json
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>/* To learn more about this file see: https://angular.io/config/tsconfig. */\r\n{\r\n  \"extends\": \"./tsconfig.json\",\r\n  \"compilerOptions\": {\r\n    \"outDir\": \"./out-tsc/app\",\r\n    \"types\": []\r\n  },\r\n  \"files\": [\r\n    \"src/main.ts\",\r\n    \"src/polyfills.ts\"\r\n  ],\r\n  \"include\": [\r\n    \"src/**/*.d.ts\"\r\n  ]\r\n}\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/IdarathonFrontend/tsconfig.app.json b/IdarathonFrontend/tsconfig.app.json
+---- a/IdarathonFrontend/tsconfig.app.json	(revision 4030fdcc1f717785a8b5da552ee759c60b117717)
+-+++ b/IdarathonFrontend/tsconfig.app.json	(date 1611859136110)
+-@@ -11,5 +11,8 @@
+-   ],
+-   "include": [
+-     "src/**/*.d.ts"
+--  ]
+-+  ]/*,///// harone addition
+-+  "angularCompilerOptions": {
+-+    "enableIvy": false
+-+  }*/
+- }
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_1_23_2021_2_19_PM__Default_Changelist_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_1_23_2021_2_19_PM__Default_Changelist_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_1_23_2021_2_19_PM__Default_Changelist_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_1_23_2021_2_19_PM__Default_Changelist_.xml	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
++++ /dev/null	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_1_23_2021_2_19_PM_[Default_Changelist]" date="1611408053008" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_23_2021_2_19_PM_[Default_Changelist]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 1/23/2021 2:19 PM [Default Changelist]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_1_30_2021_11_44_AM__Default_Changelist_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_1_30_2021_11_44_AM__Default_Changelist_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_1_30_2021_11_44_AM__Default_Changelist_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_1_30_2021_11_44_AM__Default_Changelist_.xml	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
++++ /dev/null	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_1_30_2021_11_44_AM_[Default_Changelist]" date="1612003587559" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_30_2021_11_44_AM_[Default_Changelist]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 1/30/2021 11:44 AM [Default Changelist]" />
+-</changelist>
+\ No newline at end of file
+Index: IdarathonFrontend/package.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n  \"name\": \"idarathon-frontend\",\r\n  \"version\": \"0.0.0\",\r\n  \"scripts\": {\r\n    \"ng\": \"ng\",\r\n    \"start\": \"ng serve\",\r\n    \"build\": \"ng build\",\r\n    \"test\": \"ng test\",\r\n    \"lint\": \"ng lint\",\r\n    \"e2e\": \"ng e2e\"\r\n  },\r\n  \"private\": true,\r\n  \"dependencies\": {\r\n    \"@angular/animations\": \"~11.0.5\",\r\n    \"@angular/cdk\": \"^11.1.1\",\r\n    \"@angular/common\": \"~11.0.5\",\r\n    \"@angular/compiler\": \"~11.0.5\",\r\n    \"@angular/core\": \"~11.0.5\",\r\n    \"@angular/forms\": \"~11.0.5\",\r\n    \"@angular/material\": \"^11.1.1\",\r\n    \"@angular/material-moment-adapter\": \"^11.1.1\",\r\n    \"@angular/platform-browser\": \"~11.0.5\",\r\n    \"@angular/platform-browser-dynamic\": \"~11.0.5\",\r\n    \"@angular/router\": \"~11.0.5\",\r\n    \"moment\": \"^2.29.1\",\r\n    \"rxjs\": \"~6.6.0\",\r\n    \"tslib\": \"^2.0.0\",\r\n    \"zone.js\": \"~0.10.2\"\r\n  },\r\n  \"devDependencies\": {\r\n    \"@angular-devkit/build-angular\": \"^0.1100.7\",\r\n    \"@angular/cli\": \"~11.0.5\",\r\n    \"@angular/compiler-cli\": \"~11.0.5\",\r\n    \"@types/jasmine\": \"~3.6.0\",\r\n    \"@types/node\": \"^12.11.1\",\r\n    \"codelyzer\": \"^6.0.0\",\r\n    \"jasmine-core\": \"~3.6.0\",\r\n    \"jasmine-spec-reporter\": \"~5.0.0\",\r\n    \"karma\": \"~5.1.0\",\r\n    \"karma-chrome-launcher\": \"~3.1.0\",\r\n    \"karma-coverage\": \"~2.0.3\",\r\n    \"karma-jasmine\": \"~4.0.0\",\r\n    \"karma-jasmine-html-reporter\": \"^1.5.0\",\r\n    \"protractor\": \"~7.0.0\",\r\n    \"ts-node\": \"~8.3.0\",\r\n    \"tslint\": \"~6.1.0\",\r\n    \"typescript\": \"~4.0.2\"\r\n  }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IdarathonFrontend/package.json b/IdarathonFrontend/package.json
+--- a/IdarathonFrontend/package.json	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
++++ b/IdarathonFrontend/package.json	(date 1612267998093)
+@@ -22,6 +22,8 @@
+     "@angular/platform-browser": "~11.0.5",
+     "@angular/platform-browser-dynamic": "~11.0.5",
+     "@angular/router": "~11.0.5",
++    "angular-calendar": "^0.28.22",
++    "date-fns": "^2.16.1",
+     "moment": "^2.29.1",
+     "rxjs": "~6.6.0",
+     "tslib": "^2.0.0",
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"34bd963b-29b3-459e-997e-8200b4484b64\" name=\"Default Changelist\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/front.iml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/modules.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_23_2021_2_19_PM_[Default_Changelist]/shelved.patch\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_23_2021_2_19_PM__Default_Changelist_.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_28_2021_7_37_PM_[Default_Changelist]/shelved.patch\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_28_2021_7_37_PM_[Default_Changelist]1/shelved.patch\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_28_2021_7_37_PM__Default_Changelist_.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_28_2021_7_37_PM__Default_Changelist_1.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_30_2021_11_44_AM_[Default_Changelist]/shelved.patch\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_30_2021_11_44_AM__Default_Changelist_.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/vcs.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/DataTest/employees.ts\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/DataTest/roles.ts\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/DataTest/services.ts\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/Models/Autorisation.ts\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/Models/Poste.ts\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/Models/Profile.ts\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/Models/Role.ts\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/Models/Roulement.ts\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/Models/RoulemmentDialog.ts\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/Models/Service.ts\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/Models/User.ts\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/components/afficher-autorisations/afficher-autorisations.component.css\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/components/afficher-autorisations/afficher-autorisations.component.html\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/components/afficher-autorisations/afficher-autorisations.component.spec.ts\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/components/afficher-autorisations/afficher-autorisations.component.ts\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/components/roulement/PeriodicElement.ts\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/components/roulement/roulement.component.css\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/components/roulement/roulement.component.html\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/components/roulement/roulement.component.spec.ts\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/components/roulement/roulement.component.ts\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/components/update-roulement/update-roulement.component.css\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/components/update-roulement/update-roulement.component.html\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/components/update-roulement/update-roulement.component.spec.ts\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/components/update-roulement/update-roulement.component.ts\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/services/roulement.service.spec.ts\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/services/roulement.service.ts\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/IdarathonFrontend/package-lock.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/IdarathonFrontend/package-lock.json\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/IdarathonFrontend/package.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/IdarathonFrontend/package.json\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/app-routing.module.ts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/app-routing.module.ts\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/app.module.ts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/app.module.ts\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/side-bar/side-bar.component.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/app/side-bar/side-bar.component.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/IdarathonFrontend/src/styles.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/IdarathonFrontend/src/styles.css\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/IdarathonFrontend/tsconfig.app.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/IdarathonFrontend/tsconfig.app.json\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"TypeScript File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n    <option name=\"RESET_MODE\" value=\"HARD\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1n3ekSSlZEpATlhgKtHW7xtrPoj\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"aspect.path.notification.shown\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/IdarathonFrontend/src/app/Models\" />\r\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\r\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\r\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n    <property name=\"ts.external.directory.path\" value=\"C:\\Users\\haron\\Desktop\\progs\\InteliJ\\PFA2021\\front\\IdarathonFrontend\\node_modules\\typescript\\lib\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\haron\\Desktop\\progs\\InteliJ\\PFA2021\\front\\IdarathonFrontend\\src\\app\\Models\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\haron\\Desktop\\progs\\InteliJ\\PFA2021\\front\\IdarathonFrontend\\src\\app\\components\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"npm.Angular CLI Server\">\r\n    <configuration name=\"E2E Tests (IdarathonFrontend)\" type=\"JavaScriptTestRunnerProtractor\">\r\n      <config-file value=\"$PROJECT_DIR$/IdarathonFrontend/e2e/protractor.conf.js\" />\r\n      <node-interpreter value=\"project\" />\r\n      <protractor-options value=\"\" />\r\n      <envs />\r\n      <scope-kind value=\"ALL\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"Angular Application\" type=\"JavascriptDebugType\" uri=\"http://localhost:4200\">\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"Angular CLI Server\" type=\"js.build_tools.npm\">\r\n      <package-json value=\"$PROJECT_DIR$/IdarathonFrontend/package.json\" />\r\n      <command value=\"run\" />\r\n      <scripts>\r\n        <script value=\"start\" />\r\n      </scripts>\r\n      <node-interpreter value=\"project\" />\r\n      <envs />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"34bd963b-29b3-459e-997e-8200b4484b64\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1610623344508</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1610623344508</updated>\r\n      <workItem from=\"1610623346594\" duration=\"8777000\" />\r\n      <workItem from=\"1610811900741\" duration=\"434000\" />\r\n      <workItem from=\"1611407919410\" duration=\"31259000\" />\r\n      <workItem from=\"1611741141081\" duration=\"37792000\" />\r\n      <workItem from=\"1611996901227\" duration=\"11451000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"modif css img du logo dans le component sidebar\">\r\n      <created>1611859003172</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1611859003172</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"origin/main\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"modif css img du logo dans le component sidebar\" />\r\n    <MESSAGE value=\"module diali + zadt la route dial module ta3i\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"module diali + zadt la route dial module ta3i\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"javascript\">\r\n          <url>file://$PROJECT_DIR$/IdarathonFrontend/src/app/app.module.ts</url>\r\n          <line>17</line>\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
++++ b/.idea/workspace.xml	(date 1614111718252)
+@@ -2,53 +2,24 @@
+ <project version="4">
+   <component name="ChangeListManager">
+     <list default="true" id="34bd963b-29b3-459e-997e-8200b4484b64" name="Default Changelist" comment="">
+-      <change afterPath="$PROJECT_DIR$/.idea/front.iml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_23_2021_2_19_PM_[Default_Changelist]/shelved.patch" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_23_2021_2_19_PM__Default_Changelist_.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_28_2021_7_37_PM_[Default_Changelist]/shelved.patch" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_28_2021_7_37_PM_[Default_Changelist]1/shelved.patch" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_28_2021_7_37_PM__Default_Changelist_.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_28_2021_7_37_PM__Default_Changelist_1.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_30_2021_11_44_AM_[Default_Changelist]/shelved.patch" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_30_2021_11_44_AM__Default_Changelist_.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/DataTest/employees.ts" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/DataTest/roles.ts" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/DataTest/services.ts" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/Models/Autorisation.ts" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/Models/Poste.ts" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/Models/Profile.ts" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/Models/Role.ts" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/Models/Roulement.ts" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/Models/RoulemmentDialog.ts" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/Models/Service.ts" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/Models/User.ts" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/afficher-autorisations/afficher-autorisations.component.css" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/afficher-autorisations/afficher-autorisations.component.html" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/afficher-autorisations/afficher-autorisations.component.spec.ts" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/afficher-autorisations/afficher-autorisations.component.ts" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/roulement/PeriodicElement.ts" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/roulement/roulement.component.css" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/roulement/roulement.component.html" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/roulement/roulement.component.spec.ts" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/roulement/roulement.component.ts" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/update-roulement/update-roulement.component.css" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/update-roulement/update-roulement.component.html" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/update-roulement/update-roulement.component.spec.ts" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/update-roulement/update-roulement.component.ts" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/services/roulement.service.spec.ts" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/services/roulement.service.ts" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_23_2021_2_19_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_23_2021_2_19_PM__Default_Changelist_.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_28_2021_7_37_PM_[Default_Changelist]1/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_28_2021_7_37_PM__Default_Changelist_1.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_30_2021_11_44_AM_[Default_Changelist]/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_30_2021_11_44_AM__Default_Changelist_.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/IdarathonFrontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/package-lock.json" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/IdarathonFrontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/package.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/app-routing.module.ts" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/Models/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/Models/User.ts" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/app.module.ts" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/afficher-autorisations/afficher-autorisations.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/afficher-autorisations/afficher-autorisations.component.ts" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/roulement/roulement.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/roulement/roulement.component.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/roulement/roulement.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/roulement/roulement.component.ts" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/home/home.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/home/home.component.css" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/home/home.component.html" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/side-bar/side-bar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/side-bar/side-bar.component.html" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/styles.css" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/tsconfig.app.json" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -76,7 +47,7 @@
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
+     <property name="aspect.path.notification.shown" value="true" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$/IdarathonFrontend/src/app/Models" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$/IdarathonFrontend/src/assets/images" />
+     <property name="node.js.detected.package.tslint" value="true" />
+     <property name="node.js.path.for.package.tslint" value="project" />
+     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+@@ -85,6 +56,7 @@
+   </component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
++      <recent name="C:\Users\haron\Desktop\progs\InteliJ\PFA2021\front\IdarathonFrontend\src\assets\images" />
+       <recent name="C:\Users\haron\Desktop\progs\InteliJ\PFA2021\front\IdarathonFrontend\src\app\Models" />
+     </key>
+     <key name="MoveFile.RECENT_KEYS">
+@@ -126,7 +98,12 @@
+       <workItem from="1610811900741" duration="434000" />
+       <workItem from="1611407919410" duration="31259000" />
+       <workItem from="1611741141081" duration="37792000" />
+-      <workItem from="1611996901227" duration="11451000" />
++      <workItem from="1611996901227" duration="11830000" />
++      <workItem from="1612011200101" duration="681000" />
++      <workItem from="1612172340649" duration="4489000" />
++      <workItem from="1613756641047" duration="1647000" />
++      <workItem from="1613991153342" duration="618000" />
++      <workItem from="1614110635980" duration="1081000" />
+     </task>
+     <task id="LOCAL-00001" summary="modif css img du logo dans le component sidebar">
+       <created>1611859003172</created>
+@@ -135,7 +112,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1611859003172</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="module diali + zadt la route dial module ta3i">
++      <created>1612008421129</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1612008421129</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+Index: IdarathonFrontend/package-lock.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IdarathonFrontend/package-lock.json b/IdarathonFrontend/package-lock.json
+--- a/IdarathonFrontend/package-lock.json	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
++++ b/IdarathonFrontend/package-lock.json	(date 1612267998486)
+@@ -1554,6 +1554,11 @@
+         "schema-utils": "^2.7.0"
+       }
+     },
++    "@mattlewis92/dom-autoscroller": {
++      "version": "2.4.2",
++      "resolved": "https://registry.npmjs.org/@mattlewis92/dom-autoscroller/-/dom-autoscroller-2.4.2.tgz",
++      "integrity": "sha512-YbrUWREPGEjE/FU6foXcAT1YbVwqD/jkYnY1dFb0o4AxtP3s4xKBthlELjndZih8uwsDWgQZx1eNskRNe2BgZQ=="
++    },
+     "@ngtools/webpack": {
+       "version": "11.0.7",
+       "resolved": "https://registry.npmjs.org/@ngtools/webpack/-/webpack-11.0.7.tgz",
+@@ -1633,6 +1638,11 @@
+         }
+       }
+     },
++    "@scarf/scarf": {
++      "version": "1.1.0",
++      "resolved": "https://registry.npmjs.org/@scarf/scarf/-/scarf-1.1.0.tgz",
++      "integrity": "sha512-b2iE8kjjzzUo2WZ0xuE2N77kfnTds7ClrDxcz3Atz7h2XrNVoAPUoT75i7CY0st5x++70V91Y+c6RpBX9MX7Jg=="
++    },
+     "@schematics/angular": {
+       "version": "11.0.5",
+       "resolved": "https://registry.npmjs.org/@schematics/angular/-/angular-11.0.5.tgz",
+@@ -2042,6 +2052,57 @@
+       "integrity": "sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=",
+       "dev": true
+     },
++    "angular-calendar": {
++      "version": "0.28.22",
++      "resolved": "https://registry.npmjs.org/angular-calendar/-/angular-calendar-0.28.22.tgz",
++      "integrity": "sha512-jcLszdvSI6+iSYEIqyQjPK5kgGAXaMoGKKGyDpmjy0nRIdaBGMzoveKr/OyiSx1B1oyxRVjj4Ig60n1/BzXmpw==",
++      "requires": {
++        "@scarf/scarf": "^1.1.0",
++        "angular-draggable-droppable": "^4.5.5",
++        "angular-resizable-element": "^3.3.3",
++        "calendar-utils": "^0.8.3",
++        "positioning": "^2.0.1",
++        "tslib": "^1.14.1"
++      },
++      "dependencies": {
++        "tslib": {
++          "version": "1.14.1",
++          "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz",
++          "integrity": "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
++        }
++      }
++    },
++    "angular-draggable-droppable": {
++      "version": "4.6.0",
++      "resolved": "https://registry.npmjs.org/angular-draggable-droppable/-/angular-draggable-droppable-4.6.0.tgz",
++      "integrity": "sha512-+8JhTDMKkc/NuFFqb8/H/QHpB+v4Z7YNrgvEbV+PQxXry19rkr89ofZgjNIXhZexTvJNb03BYlSQoknzXE9b3g==",
++      "requires": {
++        "@mattlewis92/dom-autoscroller": "^2.4.2",
++        "tslib": "^1.9.0"
++      },
++      "dependencies": {
++        "tslib": {
++          "version": "1.14.1",
++          "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz",
++          "integrity": "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
++        }
++      }
++    },
++    "angular-resizable-element": {
++      "version": "3.3.4",
++      "resolved": "https://registry.npmjs.org/angular-resizable-element/-/angular-resizable-element-3.3.4.tgz",
++      "integrity": "sha512-jA3j8qcWXKR+rdXxerAjpKhUsoUlEBQP3CmutHcHRAKTkQjZTd1LcZOZOnfIdOToyXsIKXYscbHpbPoCeew2Yw==",
++      "requires": {
++        "tslib": "^1.9.0"
++      },
++      "dependencies": {
++        "tslib": {
++          "version": "1.14.1",
++          "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz",
++          "integrity": "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
++        }
++      }
++    },
+     "ansi-colors": {
+       "version": "4.1.1",
+       "resolved": "https://registry.npmjs.org/ansi-colors/-/ansi-colors-4.1.1.tgz",
+@@ -2834,6 +2895,11 @@
+         "unset-value": "^1.0.0"
+       }
+     },
++    "calendar-utils": {
++      "version": "0.8.4",
++      "resolved": "https://registry.npmjs.org/calendar-utils/-/calendar-utils-0.8.4.tgz",
++      "integrity": "sha512-0btakIxxHrCMX/7L6jayixKG9OnGIbqAh5oHe0Me2LYAS7zdEUoRxndyN4N04yVyZURgx1iNXj4l5m51/sDShg=="
++    },
+     "call-bind": {
+       "version": "1.0.2",
+       "resolved": "https://registry.npmjs.org/call-bind/-/call-bind-1.0.2.tgz",
+@@ -3906,6 +3972,11 @@
+         "assert-plus": "^1.0.0"
+       }
+     },
++    "date-fns": {
++      "version": "2.16.1",
++      "resolved": "https://registry.npmjs.org/date-fns/-/date-fns-2.16.1.tgz",
++      "integrity": "sha512-sAJVKx/FqrLYHAQeN7VpJrPhagZc9R4ImZIWYRFZaaohR3KzmuK88touwsSwSVT8Qcbd4zoDsnGfX4GFB4imyQ=="
++    },
+     "date-format": {
+       "version": "3.0.0",
+       "resolved": "https://registry.npmjs.org/date-format/-/date-format-3.0.0.tgz",
+@@ -8703,6 +8774,11 @@
+         }
+       }
+     },
++    "positioning": {
++      "version": "2.0.1",
++      "resolved": "https://registry.npmjs.org/positioning/-/positioning-2.0.1.tgz",
++      "integrity": "sha512-DsAgM42kV/ObuwlRpAzDTjH9E8fGKkMDJHWFX+kfNXSxh7UCCQxEmdjv/Ws5Ft1XDnt3JT8fIDYeKNSE2TbttA=="
++    },
+     "posix-character-classes": {
+       "version": "0.1.1",
+       "resolved": "https://registry.npmjs.org/posix-character-classes/-/posix-character-classes-0.1.1.tgz",
+Index: IdarathonFrontend/src/app/Models/User.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {Role} from './Role';\r\nimport {Roulement} from './Roulement';\r\nimport {Autorisation} from './Autorisation';\r\nimport {Profile} from './Profile';\r\nimport {Poste} from './Poste';\r\nimport {Service} from './Service';\r\n\r\nexport interface User{\r\n  id: number;\r\n  username: string;\r\n  password: string;\r\n  roles: Role[];\r\n  roulement: Roulement;\r\n  autorisations: Autorisation[];\r\n  nom: string;\r\n  prenom: string;\r\n  profile: Profile;\r\n  poste: Poste;\r\n  service: Service;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IdarathonFrontend/src/app/Models/User.ts b/IdarathonFrontend/src/app/Models/User.ts
+--- a/IdarathonFrontend/src/app/Models/User.ts	(revision 4ba9257dd937a53eb242c3dfe33d3b902001225c)
++++ b/IdarathonFrontend/src/app/Models/User.ts	(date 1612172451552)
+@@ -11,7 +11,7 @@
+   password: string;
+   roles: Role[];
+   roulement: Roulement;
+-  autorisations: Autorisation[];
++  autorisation: Autorisation[];
+   nom: string;
+   prenom: string;
+   profile: Profile;
