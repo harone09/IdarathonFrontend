@@ -31,7 +31,7 @@ export class ListProjectComponent implements OnInit {
   @ViewChild(MatSort) sort:MatSort;
   @ViewChild(MatPaginator) paginator
 
-  constructor(private changeDetectorRefs: ChangeDetectorRef,private projetServ:ProjetServiceService,public addDialog:MatDialog,public updateDialog:MatDialog,public deleteDialog:MatDialog){
+  constructor(private projetServ:ProjetServiceService,public addDialog:MatDialog,public updateDialog:MatDialog,public deleteDialog:MatDialog){
     this.sort=new MatSort();
   }
 
@@ -101,13 +101,12 @@ export class ListProjectComponent implements OnInit {
   }
 
 
-   retrieveProjects() {
-     this.projetServ.getAll()
+   async retrieveProjects() {
+     (await this.projetServ.getAll())
       .subscribe(
         data => {
           this.projects=data;
           this.dataSource=new MatTableDataSource<Project>(this.projects);
-          this.changeDetectorRefs.detectChanges();
           this.dataSource.sort=this.sort;
           this.dataSource.paginator=this.paginator;
         },
