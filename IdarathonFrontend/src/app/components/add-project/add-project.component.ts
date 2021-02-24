@@ -24,8 +24,13 @@ export class AddProjectComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  async submitAddProject(p): Promise<void> {
-    await this.projetServ.create(p);
+   submitAddProject(p): void {
+     this.projetServ.create(p).subscribe(c => {
+          console.log("after creating");
+          console.log(c);
+     });
+    console.log("test ajout");
+    console.log(p);
   }
 }
 

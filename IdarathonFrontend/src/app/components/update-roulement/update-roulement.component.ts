@@ -43,7 +43,6 @@ export class UpdateRoulementComponent implements OnInit {
     this.data.roulement.roulement = this.form.get('roulement')?.value;
     this.data.roulement.date = this.form.get('date')?.value;
     this.roulementService.updateUser(this.data).subscribe(c => {
-      console.log(c);
     });
     this.dialogRef.close();
 

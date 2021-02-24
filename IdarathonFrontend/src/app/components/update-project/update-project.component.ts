@@ -30,7 +30,7 @@ export class UpdateProjectComponent implements OnInit {
   }
 
   async submitUpdateProject(p): Promise<void> {
-    await this.projetServ.update(p.id, p)
+    (await this.projetServ.update(p.id, p)).subscribe();
   }
 }
 

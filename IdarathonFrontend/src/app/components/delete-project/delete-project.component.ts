@@ -31,7 +31,7 @@ export class DeleteProjectComponent implements OnInit {
     }
 
   async submitDeleteProject(p): Promise<void> {
-    await this.projetServ.delete(p.id);
+    (await this.projetServ.delete(p.id)).subscribe();
   }
 
 }
