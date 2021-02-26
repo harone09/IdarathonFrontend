@@ -1,9 +1,18 @@
 
-<button mat-flat-button (click)="openAddDialog()"> Nouveau Projet</button><br>
-  <mat-form-field>
-    <input matInput (keyup)="applyFilter($any($event.target).value)" placeholder="Search">
-  </mat-form-field>
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 glass">
+  <div class="glass container-glass">
+    <table>
+      <tr>
+        <td>
+          <button mat-flat-button (click)="openAddDialog()">Nouveau Projet</button>
+        </td>
+        <td>
+          <mat-form-field style="float: right;">
+            <input matInput (keyup)="applyFilter($any($event.target).value)" placeholder="Search">
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 glass ">
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom</th>
     <td mat-cell *matCellDef="let element"> {{element.name}} </td>
@@ -39,4 +48,5 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-  <mat-paginator class="glass" style="width:80%;" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  <mat-paginator class="glass" style="width:100%;" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

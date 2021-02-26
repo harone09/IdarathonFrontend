@@ -1,9 +1,16 @@
+import { DeletePhaseComponent } from './../delete-phase/delete-phase.component';
+import { UpdatePhaseComponent } from './../update-phase/update-phase.component';
+import { AddPhaseComponent } from './../add-phase/add-phase.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProjetServiceService } from 'src/app/services/projet-service.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { UpdateTacheComponent } from '../update-tache/update-tache.component';
+import { AddTacheComponent } from '../add-tache/add-tache.component';
+import { DeleteTacheComponent } from '../delete-tache/delete-tache.component';
 export interface Tache{
   id:number;
 	name:String;
@@ -44,7 +51,8 @@ export class ListPhaseComponent implements OnInit {
   dataSourceTaches=new MatTableDataSource<Tache>();
   @ViewChild('sortTaches') sortTaches:MatSort;
   @ViewChild('paginatorTaches') paginatorTaches
-  constructor(private router:Router, private activeRoute:ActivatedRoute,private projetServ:ProjetServiceService) {
+
+  constructor(public addDialogT:MatDialog,public updateDialogT:MatDialog,public deleteDialogT:MatDialog,public addDialog:MatDialog,public updateDialog:MatDialog,public deleteDialog:MatDialog,private router:Router, private activeRoute:ActivatedRoute,private projetServ:ProjetServiceService) {
     this.sortPhases=new MatSort();
     this.sortTaches=new MatSort();
    }
@@ -97,60 +105,124 @@ applyFilterTaches(filterValue: string): void{
   filterValue = filterValue.toLowerCase();
   this.dataSourceTaches.filter = filterValue;
 }
- /*
+
  openAddDialog(): void {
-  const dialogRef = this.addDialog.open(AddProjectComponent, {
+  const dialogRef = this.addDialog.open(AddPhaseComponent, {
     maxWidth: "100%",
     data:{
       name:'',
       description:'',
       dateDebut:'',
-      dateFin:''
+      dateFin:'',
+      pourcentage:'',
+      idProjet:this.idP
     }
   });
   dialogRef.afterClosed().subscribe(result=>{
     setTimeout(() => {
-      this.retrieveProjects();
+      this.retrieveProject(this.idP);
     }, 1000);
   });
 }
-
 
 openUpdateDialog(idP:number):void{
-  const dialogRef = this.updateDialog.open(UpdateProjectComponent, {
+  const dialogRef = this.updateDialog.open(UpdatePhaseComponent, {
     maxWidth: "100%",
     data:{
       id:idP,
       name:'',
       description:'',
       dateDebut:'',
-      dateFin:''
+      dateFin:'',
+      pourcentage:''
     }
   });
   dialogRef.afterClosed().subscribe(result=>{
     setTimeout(() => {
-      this.retrieveProjects();
+      this.retrieveProject(this.idP);
     }, 1000);
   })
 }
-
  openDeleteDialog(idP:number):void{
-  const dialogRef = this.deleteDialog.open(DeleteProjectComponent, {
+  const dialogRef = this.deleteDialog.open(DeletePhaseComponent, {
     maxWidth: "100%",
     data:{
       id:idP,
       name:'',
       description:'',
       dateDebut:'',
-      dateFin:''
+      dateFin:'',
+      pourcentage:''
     }
   });
   dialogRef.afterClosed().subscribe(result=>{
     setTimeout(() => {
-      this.retrieveProjects();
+      this.retrieveProject(this.idP);
     }, 1000);
 
   })
-}*/
+}
+
+openAddDialogT(): void {
+  const dialogRef = this.addDialogT.open(AddTacheComponent, {
+    maxWidth: "100%",
+    data:{
+      name:'',
+      description:'',
+      dateDebut:'',
+      dateFin:'',
+      pourcentage:'',
+      idPhase:this.selectedPhase.id
+    }
+  });
+  dialogRef.afterClosed().subscribe(result=>{
+    this.dataSourceTaches=new MatTableDataSource();
+    setTimeout(() => {
+      this.retrieveProject(this.idP);
+    }, 1000);
+  });
+}
+
+openUpdateDialogT(idP:number):void{
+  const dialogRef = this.updateDialogT.open(UpdateTacheComponent, {
+    maxWidth: "100%",
+    data:{
+      id:idP,
+      name:'',
+      description:'',
+      dateDebut:'',
+      dateFin:'',
+      pourcentage:'',
+      validation:''
+    }
+  });
+  dialogRef.afterClosed().subscribe(result=>{
+    this.dataSourceTaches=new MatTableDataSource();
+    setTimeout(() => {
+      this.retrieveProject(this.idP);
+    }, 1000);
+  })
+}
+ openDeleteDialogT(idP:number):void{
+  const dialogRef = this.deleteDialogT.open(DeleteTacheComponent, {
+    maxWidth: "100%",
+    data:{
+      id:idP,
+      name:'',
+      description:'',
+      dateDebut:'',
+      dateFin:'',
+      pourcentage:'',
+      validation:''
+    }
+  });
+  dialogRef.afterClosed().subscribe(result=>{
+    this.dataSourceTaches=new MatTableDataSource();
+    setTimeout(() => {
+      this.retrieveProject(this.idP);
+    }, 1000);
+
+  })
+}
 
 }

@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Nouvelle Tache</h2>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Nom du Tache</mat-label>
+    <input matInput [(ngModel)]="data.name">
+  </mat-form-field><br>
+  <mat-form-field>
+    <mat-label>Description du Tache</mat-label>
+    <input matInput [(ngModel)]="data.description">
+  </mat-form-field><br>
+  <mat-form-field>
+    <mat-label>Date Debut Tache</mat-label>
+    <input matInput [(ngModel)]="data.dateDebut" [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field><br>
+  <mat-form-field>
+    <mat-label>Date Fin Tache</mat-label>
+    <input matInput [(ngModel)]="data.dateFin" [matDatepicker]="picker2">
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field><br>
+  <mat-form-field>
+    <mat-label>Pourcentage</mat-label>
+    <input matInput [(ngModel)]="data.pourcentage">
+  </mat-form-field><br>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Annuler</button>
+  <button mat-button (click)="onValid()" cdkFocusInitial>Valider</button>
+</div>

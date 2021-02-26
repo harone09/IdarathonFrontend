@@ -6,6 +6,8 @@ import {User} from "../Models/User";
 
 
 const baseUrl = 'http://localhost:1926/projetApi/projets';
+const baseUrlPhase='http://localhost:1926/projetApi/phases';
+const baseUrlTache='http://localhost:1926/projetApi/taches';
 @Injectable({
   providedIn: 'root'
 })
@@ -39,6 +41,38 @@ export class ProjetServiceService {
   async delete(id) {
     return await Promise.resolve(this.http.delete(`${baseUrl}/${id}`));
   }
+
+
+  async getPhase(id): Promise<Observable<any>> {
+    return await Promise.resolve(this.http.get(`${baseUrlPhase}/${id}`));
+  }
+   createPhase(id,data){
+      return this.http.post(`${baseUrlPhase}/${id}`, data);
+  }
+
+  async updatePhase(id, data){
+    return await Promise.resolve(this.http.put(`${baseUrlPhase}/${id}`, data));
+  }
+
+  async deletePhase(id) {
+    return await Promise.resolve(this.http.delete(`${baseUrlPhase}/${id}`));
+  }
+
+  async getTache(id): Promise<Observable<any>> {
+    return await Promise.resolve(this.http.get(`${baseUrlTache}/${id}`));
+  }
+   createTache(id,data){
+      return this.http.post(`${baseUrlTache}/${id}`, data);
+  }
+
+  async updateTache(id, data){
+    return await Promise.resolve(this.http.put(`${baseUrlTache}/${id}`, data));
+  }
+
+  async deleteTache(id) {
+    return await Promise.resolve(this.http.delete(`${baseUrlTache}/${id}`));
+  }
+
 
   /////////////////////////////////////////
   // tslint:disable-next-line:typedef

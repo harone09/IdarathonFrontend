@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Suppression Phase</h2>
+<div mat-dialog-content>
+  <h2>Etes vous sur de supprimer la phase:</h2>
+  <mat-form-field>
+    <mat-label>Nom du Phase</mat-label>
+    <input matInput [(ngModel)]="data.name" value="{{data.name}}" disabled>
+  </mat-form-field><br>
+  <mat-form-field>
+    <mat-label>Description du Phase</mat-label>
+    <input matInput [(ngModel)]="data.description" value="{{data.description}}" disabled>
+  </mat-form-field><br>
+  <mat-form-field>
+    <mat-label>Date Debut Phase</mat-label>
+    <input matInput [(ngModel)]="data.dateDebut" [matDatepicker]="picker" value="{{data.dateDebut}}" disabled>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field><br>
+  <mat-form-field>
+    <mat-label>Date Fin Phase</mat-label>
+    <input matInput [(ngModel)]="data.dateFin" [matDatepicker]="picker2" value="{{data.dateFin}}" disabled>
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field><br>
+  <mat-form-field>
+    <mat-label>Pourcentage</mat-label>
+    <input matInput [(ngModel)]="data.pourcentage" value="{{data.pourcentage}}" disabled>
+  </mat-form-field><br>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Annuler</button>
+  <button mat-button (click)="onValid()" cdkFocusInitial mat-red>Suppimer</button>
+</div>

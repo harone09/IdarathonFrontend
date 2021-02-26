@@ -43,6 +43,12 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {ListPhaseComponent} from './components/list-phase/list-phase.component';
 
 import {HomeComponent} from './home/home.component';
+import { DeletePhaseComponent } from './components/delete-phase/delete-phase.component';
+import { UpdatePhaseComponent } from './components/update-phase/update-phase.component';
+import { AddPhaseComponent } from './components/add-phase/add-phase.component';
+import { AddTacheComponent } from './components/add-tache/add-tache.component';
+import { UpdateTacheComponent } from './components/update-tache/update-tache.component';
+import { DeleteTacheComponent } from './components/delete-tache/delete-tache.component';
 
 
 @NgModule({
@@ -59,6 +65,12 @@ import {HomeComponent} from './home/home.component';
     AfficherAutorisationsComponent,
     ListPhaseComponent,
     HomeComponent,
+    DeletePhaseComponent,
+    UpdatePhaseComponent,
+    AddPhaseComponent,
+    AddTacheComponent,
+    UpdateTacheComponent,
+    DeleteTacheComponent,
 
   ],
   imports: [
