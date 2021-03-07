@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {map, shareReplay} from 'rxjs/operators';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {User} from '../Models/User';
 
 @Component({
   selector: 'app-side-bar',
@@ -15,8 +16,11 @@ export class SideBarComponent {
       map(result => result.matches),
       shareReplay()
     );
-
+   connectedUser: User = JSON.parse( localStorage.getItem('User') as string);
   constructor(private breakpointObserver: BreakpointObserver) {}
 
 
+  logout(): void{
+    localStorage.clear();
+  }
 }

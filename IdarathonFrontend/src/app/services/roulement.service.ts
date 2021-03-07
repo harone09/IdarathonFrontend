@@ -10,17 +10,18 @@ import {Autorisation} from '../Models/Autorisation';
 })
 export class RoulementService {
   private url = 'http://localhost:1926/projetApi/';
-
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8',
+      'Authorization': localStorage.getItem('JwtToken')
+  })
   };
   constructor(private http: HttpClient) {
 
   }
   ///////////////////////////////////////
   getUsers(): Observable<User[]> {
-
-    return this.http.get<User[]>(this.url + 'Users')
+    return this.http.get<User[]>(this.url + 'Users', this.httpOptions)
       .pipe(
         catchError(this.handleError<User[]>('getUsers', []))
       );

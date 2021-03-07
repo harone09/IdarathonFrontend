@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProjetServiceService } from 'src/app/services/projet-service.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-update-tache',
@@ -10,12 +11,15 @@ import { ProjetServiceService } from 'src/app/services/projet-service.service';
 export class UpdateTacheComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
+    if (localStorage.getItem('User') == null) {
+      this.router.navigate(['/login']);
+    }
     (await this.projetServ.getTache(this.data.id)).subscribe(r=>{
       this.data=r;
     })
   }
 
-  constructor(private projetServ:ProjetServiceService,public dialogRef: MatDialogRef<UpdateTacheComponent>
+  constructor(public router: Router, private projetServ:ProjetServiceService,public dialogRef: MatDialogRef<UpdateTacheComponent>
     ,@Inject(MAT_DIALOG_DATA) public data: UpdatePhaseModel) { }
 
 

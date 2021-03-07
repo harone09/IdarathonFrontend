@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProjetServiceService } from 'src/app/services/projet-service.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-phase',
@@ -9,10 +10,13 @@ import { ProjetServiceService } from 'src/app/services/projet-service.service';
 })
 export class AddPhaseComponent implements OnInit {
 
-  constructor(private projetServ:ProjetServiceService,public dialogRef: MatDialogRef<AddPhaseComponent>
+  constructor(public router: Router, private projetServ:ProjetServiceService,public dialogRef: MatDialogRef<AddPhaseComponent>
     ,@Inject(MAT_DIALOG_DATA) public data: AddPhaseModel) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('User') == null) {
+      this.router.navigate(['/login']);
+    }
   }
 
   onNoClick(): void {

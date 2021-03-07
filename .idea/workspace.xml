@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="34bd963b-29b3-459e-997e-8200b4484b64" name="Default Changelist" comment="integration totale front">
+    <list default="true" id="34bd963b-29b3-459e-997e-8200b4484b64" name="Default Changelist" comment="final project(up to date)">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_23_2021_9_23_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_23_2021_9_23_PM__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_23_2021_9_46_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_23_2021_9_46_PM__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/add-phase/add-phase.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/add-phase/add-phase.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/add-project/add-project.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/add-project/add-project.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/add-tache/add-tache.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/add-tache/add-tache.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/afficher-autorisations/afficher-autorisations.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/afficher-autorisations/afficher-autorisations.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/delete-phase/delete-phase.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/delete-phase/delete-phase.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/delete-project/delete-project.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/delete-project/delete-project.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/delete-tache/delete-tache.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/delete-tache/delete-tache.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/list-phase/list-phase.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/list-phase/list-phase.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/list-project/list-project.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/list-project/list-project.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/roulement/roulement.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/roulement/roulement.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/roulement/roulement.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/roulement/roulement.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/roulement/roulement.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/roulement/roulement.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/update-phase/update-phase.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/update-phase/update-phase.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/update-project/update-project.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/update-project/update-project.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/update-roulement/update-roulement.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/update-roulement/update-roulement.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/update-tache/update-tache.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/components/update-tache/update-tache.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/login/login.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/login/login.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/login/login.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/services/projet-service.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/services/projet-service.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/services/rest-api-login.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/services/rest-api-login.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/services/roulement.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/services/roulement.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/side-bar/side-bar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/side-bar/side-bar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/app/side-bar/side-bar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/app/side-bar/side-bar.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IdarathonFrontend/src/assets/images/photo.png" beforeDir="false" afterPath="$PROJECT_DIR$/IdarathonFrontend/src/assets/images/photo.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,13 +43,6 @@
       <list>
         <option value="TypeScript File" />
       </list>
-    </option>
-  </component>
-  <component name="Git.Pull.Settings">
-    <option name="OPTIONS">
-      <set>
-        <option value="REBASE" />
-      </set>
     </option>
   </component>
   <component name="Git.Settings">
@@ -56,6 +72,7 @@
       <recent name="C:\Users\haron\Desktop\progs\InteliJ\PFA2021\front\IdarathonFrontend\src\app\Models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\haron\Desktop\progs\InteliJ\PFA2021\front\IdarathonFrontend\src\assets\images" />
       <recent name="C:\Users\haron\Desktop\progs\InteliJ\PFA2021\front\IdarathonFrontend\src\app\components" />
     </key>
   </component>
@@ -111,7 +128,9 @@
       <workItem from="1613756641047" duration="1647000" />
       <workItem from="1613991153342" duration="618000" />
       <workItem from="1614110635980" duration="6143000" />
-      <workItem from="1614189353459" duration="4283000" />
+      <workItem from="1614189353459" duration="5088000" />
+      <workItem from="1614374279414" duration="2057000" />
+      <workItem from="1614613644418" duration="21368000" />
     </task>
     <task id="LOCAL-00001" summary="modif css img du logo dans le component sidebar">
       <created>1611859003172</created>
@@ -134,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614116092022</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="final project(up to date)">
+      <created>1614196461924</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1614196461924</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,7 +194,8 @@
     <MESSAGE value="modif css img du logo dans le component sidebar" />
     <MESSAGE value="module diali + zadt la route dial module ta3i" />
     <MESSAGE value="integration totale front" />
-    <option name="LAST_COMMIT_MESSAGE" value="integration totale front" />
+    <MESSAGE value="final project(up to date)" />
+    <option name="LAST_COMMIT_MESSAGE" value="final project(up to date)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

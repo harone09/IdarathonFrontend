@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProjetServiceService } from 'src/app/services/projet-service.service';
 import { UpdateprojectModel } from '../update-project/update-project.component';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-delete-project',
@@ -10,12 +11,15 @@ import { UpdateprojectModel } from '../update-project/update-project.component';
 })
 export class DeleteProjectComponent implements OnInit {
 
-  constructor(private projetServ:ProjetServiceService,public dialogRef: MatDialogRef<DeleteProjectComponent>
+  constructor(public router: Router, private projetServ:ProjetServiceService,public dialogRef: MatDialogRef<DeleteProjectComponent>
     ,@Inject(MAT_DIALOG_DATA) public data: DeleteprojectModel){
 
     }
 
     async ngOnInit(): Promise<void> {
+      if (localStorage.getItem('User') == null) {
+        this.router.navigate(['/login']);
+      }
       (await this.projetServ.get(this.data.id)).subscribe(r=>{
         this.data=r;
       })

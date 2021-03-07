@@ -6,9 +6,10 @@
     <mat-toolbar>
       <img src="assets/images/Logo.PNG" alt="logo" style="width: 110%;">
     </mat-toolbar>
+    <div *ngIf="connectedUser!=null">
     <img src="assets/images/photo.png" alt="profil" class="profil" >
-    <h3 class="nav-text">Marie Lorene &nbsp;<mat-icon class="sky-blue" style="font-size: 18px;"> border_color</mat-icon></h3>
-
+    <h3 class="nav-text" [(ngModel)]="connectedUser">  {{connectedUser.nom}} {{connectedUser.prenom}} &nbsp;<mat-icon class="sky-blue" style="font-size: 18px;"> border_color</mat-icon></h3>
+    </div>
     <br/>
     <mat-nav-list>
       <a mat-list-item routerLink="home" class="white">
@@ -33,9 +34,10 @@
         <mat-icon class="sky-blue">find_in_page</mat-icon>
         &nbsp;Referentiels</a>
       <br/>
-      <a mat-list-item href="#" class="white">
+      <div *ngIf="connectedUser!=null">
+      <a mat-list-item href="#" class="white" (click)="logout()">
         <mat-icon class="sky-blue">subdirectory_arrow_left</mat-icon>
-        &nbsp; Se déconnécter</a>
+        &nbsp; Se déconnécter</a></div>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content style="background: linear-gradient(to right, #26D0CE, #1A2980) !important;">

@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProjetServiceService } from 'src/app/services/projet-service.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-delete-phase',
@@ -9,12 +10,15 @@ import { ProjetServiceService } from 'src/app/services/projet-service.service';
 })
 export class DeletePhaseComponent implements OnInit {
 
-  constructor(private projetServ:ProjetServiceService,public dialogRef: MatDialogRef<DeletePhaseComponent>
+  constructor(public router: Router, private projetServ:ProjetServiceService,public dialogRef: MatDialogRef<DeletePhaseComponent>
     ,@Inject(MAT_DIALOG_DATA) public data: DeleteprojectModel){
 
     }
 
     async ngOnInit(): Promise<void> {
+      if (localStorage.getItem('User') == null) {
+        this.router.navigate(['/login']);
+      }
       (await this.projetServ.getPhase(this.data.id)).subscribe(r=>{
         this.data=r;
       })

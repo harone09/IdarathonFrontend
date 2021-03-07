@@ -11,12 +11,15 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class UpdateProjectComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
+    if (localStorage.getItem('User') == null) {
+      this.router.navigate(['/login']);
+    }
     (await this.projetServ.get(this.data.id)).subscribe(r=>{
       this.data=r;
     })
   }
 
-  constructor(private projetServ:ProjetServiceService,public dialogRef: MatDialogRef<UpdateProjectComponent>
+  constructor(public router: Router, private projetServ:ProjetServiceService,public dialogRef: MatDialogRef<UpdateProjectComponent>
     ,@Inject(MAT_DIALOG_DATA) public data: UpdateprojectModel) { }
 
 

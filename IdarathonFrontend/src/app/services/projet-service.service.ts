@@ -13,18 +13,21 @@ const baseUrlTache='http://localhost:1926/projetApi/taches';
 })
 export class ProjetServiceService {
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('JwtToken')
+    })
   };
 
   constructor(private http: HttpClient ) {}
 
 
    async getAll(): Promise<Observable<any>> {
-    return await Promise.resolve(this.http.get(baseUrl));
+    return await Promise.resolve(this.http.get(baseUrl, this.httpOptions));
   }
 
    async get(id): Promise<Observable<any>> {
-    return await Promise.resolve(this.http.get(`${baseUrl}/${id}`));
+    return await Promise.resolve(this.http.get(`${baseUrl}/${id}`, this.httpOptions));
   }
 
    create(data): Observable<any>{
@@ -35,42 +38,42 @@ export class ProjetServiceService {
   }
 
   async update(id, data){
-    return await Promise.resolve(this.http.put(`${baseUrl}/${id}`, data));
+    return await Promise.resolve(this.http.put(`${baseUrl}/${id}`, data, this.httpOptions));
   }
 
   async delete(id) {
-    return await Promise.resolve(this.http.delete(`${baseUrl}/${id}`));
+    return await Promise.resolve(this.http.delete(`${baseUrl}/${id}`, this.httpOptions));
   }
 
 
   async getPhase(id): Promise<Observable<any>> {
-    return await Promise.resolve(this.http.get(`${baseUrlPhase}/${id}`));
+    return await Promise.resolve(this.http.get(`${baseUrlPhase}/${id}`, this.httpOptions));
   }
    createPhase(id,data){
-      return this.http.post(`${baseUrlPhase}/${id}`, data);
+      return this.http.post(`${baseUrlPhase}/${id}`, data, this.httpOptions);
   }
 
   async updatePhase(id, data){
-    return await Promise.resolve(this.http.put(`${baseUrlPhase}/${id}`, data));
+    return await Promise.resolve(this.http.put(`${baseUrlPhase}/${id}`, data, this.httpOptions));
   }
 
   async deletePhase(id) {
-    return await Promise.resolve(this.http.delete(`${baseUrlPhase}/${id}`));
+    return await Promise.resolve(this.http.delete(`${baseUrlPhase}/${id}`, this.httpOptions));
   }
 
   async getTache(id): Promise<Observable<any>> {
-    return await Promise.resolve(this.http.get(`${baseUrlTache}/${id}`));
+    return await Promise.resolve(this.http.get(`${baseUrlTache}/${id}`, this.httpOptions));
   }
    createTache(id,data){
-      return this.http.post(`${baseUrlTache}/${id}`, data);
+      return this.http.post(`${baseUrlTache}/${id}`, data, this.httpOptions);
   }
 
   async updateTache(id, data){
-    return await Promise.resolve(this.http.put(`${baseUrlTache}/${id}`, data));
+    return await Promise.resolve(this.http.put(`${baseUrlTache}/${id}`, data, this.httpOptions));
   }
 
   async deleteTache(id) {
-    return await Promise.resolve(this.http.delete(`${baseUrlTache}/${id}`));
+    return await Promise.resolve(this.http.delete(`${baseUrlTache}/${id}`, this.httpOptions));
   }
 
 

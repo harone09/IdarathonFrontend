@@ -6,6 +6,7 @@ import {User} from '../../Models/User';
 import {MatTableDataSource} from '@angular/material/table';
 import {Autorisation} from '../../Models/Autorisation';
 import {RoulementService} from '../../services/roulement.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-afficher-autorisations',
@@ -19,12 +20,14 @@ export class AfficherAutorisationsComponent implements OnInit, AfterViewInit {
   // @ts-ignore
   auts: Autorisation[];
 
-  constructor(public dialogRef: MatDialogRef<RoulementComponent>,
+  constructor(public router: Router, public dialogRef: MatDialogRef<RoulementComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Autorisation[], public roulementService: RoulementService) {
   }
 
   ngOnInit(): void {
-
+    if (localStorage.getItem('User') == null) {
+      this.router.navigate(['/login']);
+    }
     this.getAuts();
 
 

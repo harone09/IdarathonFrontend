@@ -58,6 +58,9 @@ export class ListPhaseComponent implements OnInit {
    }
 
   async ngOnInit(): Promise<void> {
+    if (localStorage.getItem('User') == null) {
+      this.router.navigate(['/login']);
+    }
    this.idP=this.activeRoute.snapshot.params.id;
     await this.retrieveProject(this.idP);
   }

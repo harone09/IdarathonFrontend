@@ -1,23 +1,45 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-const baseUrl = 'http://localhost:8080/';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable, of} from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import {User} from '../Models/User';
+import {Autorisation} from '../Models/Autorisation';
+import {AuthRequest} from "../Models/AuthRequest";
+import {AuthResponse} from "../Models/AuthResponse";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestApiLoginService {
+  private url = 'http://localhost:1926/projetApi/';
 
-  constructor(private http:HttpClient) { 
-   
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+  constructor(private http: HttpClient) {
+
   }
-  public login(username:string,password:string){
-     const headers = new HttpHeaders ({Authorization :'Basic'+btoa(username+":"+password)})
-    return this.http.get(baseUrl,{headers,responseType:'text' as 'json'})
+  //////////////////////////////////////
+  signIn( req: AuthRequest): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(this.url + 'authenticate', req, this.httpOptions)
+      .pipe(
+        catchError(this.handleError<AuthResponse>('Authentication', ))
+      );
   }
-  public Home(){
-    let username="test";
-    let password ="test";
-    const headers = new HttpHeaders ({Authorization :'Basic'+btoa(username+":"+password)})
-   return this.http.get(baseUrl,{headers})
- }
+
+
+/////////////////////////////////////////
+  // tslint:disable-next-line:typedef
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+      console.log(`${operation} failed: ${error.message}`);
+
+      return of(result as T);
+    }; }
+
 }

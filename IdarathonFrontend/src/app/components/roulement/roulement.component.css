@@ -56,3 +56,8 @@ mat-header-cell {
   margin-left: 10%;
   margin-bottom: 0
 }
+
+.sky-green-valid
+{
+  color: darkseagreen;
+}

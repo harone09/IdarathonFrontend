@@ -7,6 +7,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteProjectComponent } from '../delete-project/delete-project.component';
+import {Router} from "@angular/router";
 export interface Project {
   id:number;
   name: string;
@@ -31,11 +32,14 @@ export class ListProjectComponent implements OnInit {
   @ViewChild(MatSort) sort:MatSort;
   @ViewChild(MatPaginator) paginator
 
-  constructor(private projetServ:ProjetServiceService,public addDialog:MatDialog,public updateDialog:MatDialog,public deleteDialog:MatDialog){
+  constructor(public router: Router, private projetServ:ProjetServiceService,public addDialog:MatDialog,public updateDialog:MatDialog,public deleteDialog:MatDialog){
     this.sort=new MatSort();
   }
 
    ngOnInit(): void {
+     if (localStorage.getItem('User') == null) {
+       this.router.navigate(['/login']);
+     }
     this.retrieveProjects();
   }
 

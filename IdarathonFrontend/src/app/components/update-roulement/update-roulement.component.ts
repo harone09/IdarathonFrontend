@@ -5,6 +5,7 @@ import {User} from '../../Models/User';
 // import {RoulemmentDialog} from '../../Models/RoulemmentDialog';
 import {FormControl, FormGroup} from '@angular/forms';
 import {RoulementService} from '../../services/roulement.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-update-roulement',
@@ -30,7 +31,7 @@ export class UpdateRoulementComponent implements OnInit {
     roulement: new FormControl(this.data.roulement.roulement.toString()),
     date: new FormControl(this.data.roulement.date)
   });
-  constructor(public dialogRef: MatDialogRef<RoulementComponent>,
+  constructor(public router: Router, public dialogRef: MatDialogRef<RoulementComponent>,
               @Inject(MAT_DIALOG_DATA) public data: User, public roulementService: RoulementService) { }
 
   onNoClick(): void {
@@ -48,6 +49,9 @@ export class UpdateRoulementComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    if (localStorage.getItem('User') == null) {
+      this.router.navigate(['/login']);
+    }
     console.log(this.data);
   }
 

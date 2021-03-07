@@ -1,6 +1,7 @@
 import { ProjetServiceService } from './../../services/projet-service.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-project',
@@ -9,10 +10,13 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class AddProjectComponent implements OnInit {
 
-  constructor(private projetServ:ProjetServiceService,public dialogRef: MatDialogRef<AddProjectComponent>
+  constructor(public router: Router, private projetServ:ProjetServiceService,public dialogRef: MatDialogRef<AddProjectComponent>
     ,@Inject(MAT_DIALOG_DATA) public data: AddprojectModel) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('User') == null) {
+      this.router.navigate(['/login']);
+    }
   }
 
   onNoClick(): void {
